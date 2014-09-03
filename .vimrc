@@ -56,6 +56,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'sjl/badwolf'
 Bundle 'manuel-colmenero/vim-simple-session'
 Bundle 'vim-scripts/mru.vim'
+Bundle 'skwp/greplace.vim'
 if has('win32')
     " Replaces fzf in windows
     Bundle 'kien/ctrlp.vim'
@@ -210,6 +211,7 @@ nmap <silent> <Leader>s :sp<CR>
 nmap <silent> <Leader>v :vsp<CR>
 nmap <silent> <Leader>o :only<CR>
 nmap <silent> <Leader>w :bw<CR>
+nmap <silent> <Leader>W :bw!<CR>
 nmap <silent> <f4> :NERDTree<CR>
 
 " cd to directory of current file
