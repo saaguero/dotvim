@@ -182,8 +182,8 @@ endif
 nnoremap <silent> <F3> :TagbarToggle<CR>
 
 " easy scroll movement
-nmap J <nop>
-nmap K <nop>
+noremap J 5j
+noremap K 5k
 
 " command typos, no more!
 command! -bang Q q<bang>
@@ -234,6 +234,9 @@ augroup utils
     " filetype.vim (included in vim) hasn't have a good autodetection for
     " htmldjango. Therefore just rely on htmldjango for both django and html files
     autocmd BufNewFile,BufRead *.html set filetype=htmldjango
+
+    autocmd BufNewFile,BufRead *.wxs set filetype=xml
+    autocmd BufNewFile,BufRead *.md set filetype=markdown
 
     " Use xmllint for xml formatting (use gg=G to format the whole document)
     autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
