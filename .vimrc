@@ -57,12 +57,13 @@ Bundle 'sjl/badwolf'
 Bundle 'manuel-colmenero/vim-simple-session'
 Bundle 'vim-scripts/mru.vim'
 Bundle 'skwp/greplace.vim'
+Bundle 'vasconcelloslf/vim-interestingwords'
+Bundle 'Shougo/neocomplete.vim'
 if has('win32')
-    " Replaces fzf in windows
+    " Alternative to fuzzy searcher 'fzf' for windows
     Bundle 'kien/ctrlp.vim'
 else
     Bundle 'junegunn/fzf'
-    Bundle 'Valloric/YouCompleteMe'
 endif
 
 " installing plugins the first time
@@ -76,6 +77,8 @@ endif
 filetype plugin on
 filetype indent on
 
+" Allow to complete on a single-match without showing the popup
+set completeopt=menu
 " no vi-compatible
 set nocompatible
 " tabs and spaces handling (default)
@@ -287,33 +290,24 @@ nmap <F10> :%s/\s\+$//e<CR>
 " open latest closed file
 nmap <leader><S-e> :Mru<cr><cr>
 
-" ultisnips settings. Fix to use other keys as it conflicts with YCM
+" ultisnips settings. Fix to use other keys as it conflicts with YCM and others
 let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips'
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
-" YouCompleteMe settings
-if !has('win32')
-    let g:ycm_auto_trigger = 0
-    let g:ycm_collect_identifiers_from_tags_files = 1
-    let g:ycm_autoclose_preview_window_after_insertion = 1
-    let g:EclimCompletionMethod = 'omnifunc'
-endif
-augroup completion
-    autocmd!
-    " Indent if we're at the beginning of a line. Else, do completion
-    function! InsertTabWrapper()
-        let col = col('.') - 1
-        if !col || getline('.')[col - 1] !~ '\k'
-            return "\<tab>"
-        else
-            return "\<c-p>"
-        endif
-    endfunction
-    au Filetype * inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-    au Filetype * inoremap <s-tab> <c-n>
-augroup END
+" neocomplete settings
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#disable_auto_complete = 1
+let g:neocomplete#enable_smart_case = 1
+" use <tab> for triggering manual completion
+function! s:check_back_space()
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" :
+                   \ <SID>check_back_space() ? "\<TAB>" :
+                   \ neocomplete#start_manual_complete()
 
 " fugitive settings
 " prevent bloat buffer list
@@ -336,54 +330,12 @@ else
     nnoremap <Leader>e :FZF<CR>
 endif
 
+" vim-intersesting-words settings
+nnoremap <silent> <leader>1 :call InterestingWords()<cr>
+nnoremap <silent> <leader>0 :call UncolorAllWords()<cr>
+
 " custom scripts
 
 " rehighlights the last pasted text
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
-" From Steve Losh vimrc
-" Highlight Word - Works only with badwolf colorscheme
-"
-" This mini-plugin provides a few mappings for highlighting words temporarily.
-"
-" Sometimes you're looking at a hairy piece of code and would like a certain
-" word or two to stand out temporarily.  You can search for it, but that only
-" gives you one color of highlighting.  Now you can use <leader>N where N is
-" a number from 1-6 to highlight the current word in a specific color.
-function! HiInterestingWord(n)
-    " Save our location.
-    normal! mz
-
-    " Yank the current word into the z register.
-    normal! "zyiw
-
-    " Calculate an arbitrary match ID.  Hopefully nothing else is using it.
-    let mid = 86750 + a:n
-
-    " Clear existing matches, but don't worry if they don't exist.
-    silent! call matchdelete(mid)
-
-    " Construct a literal pattern that has to match at boundaries.
-    let pat = '\V\<' . escape(@z, '\') . '\>'
-
-    " Actually match the words.
-    call matchadd("InterestingWord" . a:n, pat, 1, mid)
-
-    " Move back to our original location.
-    normal! `z
-endfunction
-
-nnoremap <silent> <leader>1 :call HiInterestingWord(1)<cr>
-nnoremap <silent> <leader>2 :call HiInterestingWord(2)<cr>
-nnoremap <silent> <leader>3 :call HiInterestingWord(3)<cr>
-nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>
-nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>
-nnoremap <silent> <leader>6 :call HiInterestingWord(6)<cr>
-nnoremap <silent> <leader>0 :call clearmatches()<cr>
-
-" http://stackoverflow.com/a/1470179/854676
-" Gets information about the current highlighting under the cursor
-map <F5> :echom "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
-            \ '> trans<' . synIDattr(synID(line("."),col("."),0),"name") .
-            \ "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") .
-            \ ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>

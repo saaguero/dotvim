@@ -26,6 +26,7 @@ o        = In visual mode toggles between end and start of selection
 gu/gU    = make lowercase / uppercase
 g;/g,    = go to old / new change from :changes list
 CTRL-v   = In insert mode inserts a terminal characer literally
+r-<cr>   = Split line replacing char. Then use f<space> and . to repeat
 
 Plugins and my mappings
 =======================
