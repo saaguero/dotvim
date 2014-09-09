@@ -5,7 +5,9 @@ My cross-platform .vimrc
 # Prerequisites
 - Git, check that is in your $PATH (or %PATH% in Windows)
 - Python, check that is in your $PATH (or %PATH in Windows)
-  - For Windows use python x64
+  - For Windows use [python x64](https://www.python.org/download)
+- Lua, check that is in your $PATH (or copy the dll to your vim folder)
+  - For Windows use [lua x64](http://joedf.users.sourceforge.net/luabuilds/)
 - [Ag](https://github.com/ggreer/the_silver_searcher)
   - For Windows you can easily install using [Chocolatey](http://chocolatey.org/)
 
