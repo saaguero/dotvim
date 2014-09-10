@@ -59,6 +59,7 @@ Plugin 'skwp/greplace.vim'
 Plugin 'idbrii/vim-mark'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'justinmk/vim-gtfo'
 
 " installing plugins the first time
 if firstTimeVundle == 1
