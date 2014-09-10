@@ -29,9 +29,9 @@ My cross-platform .vimrc
     - [cmder](http://bliker.github.io/cmder/)
 
 # Installation
-- Copy or symlink .vimrc to your $HOME (or `%HOMEPATH%` in Windows)
+- Copy or symlink .vimrc to your `$HOME` (or `%HOMEPATH%` in Windows)
 - Run vim, if it doesn't detect vundle package manager, it will install it with
-  all the plugins in $HOME/.vim (or `%HOMEPATH%\.vim` in Windows)
+  all the plugins in `$HOME/.vim` (or `%HOMEPATH%\.vim` in Windows)
 
 # Credits
 - https://github.com/fisadev/fisa-vim-config
