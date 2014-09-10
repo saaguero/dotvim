@@ -114,9 +114,8 @@ set nofoldenable
 set autoread
 " when scrolling, keep cursor 3 lines away from screen border
 set scrolloff=3
-" first tab complete as much as possible, second provide a list,
-" third and subsequent tabs cycle so you can complete the file
-set wildmode=longest,list,full
+" Complete next full match then cycle with tab.
+set wildmode=full
 set wildmenu
 set cursorline
 " ignorecase is needed for smartcase to work
