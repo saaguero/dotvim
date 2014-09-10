@@ -58,12 +58,7 @@ Plugin 'vim-scripts/mru.vim'
 Plugin 'skwp/greplace.vim'
 Plugin 'idbrii/vim-mark'
 Plugin 'Shougo/neocomplete.vim'
-if has('win32')
-    " alternative to fuzzy searcher 'fzf' for windows
-    Plugin 'kien/ctrlp.vim'
-else
-    Plugin 'junegunn/fzf'
-endif
+Plugin 'kien/ctrlp.vim'
 
 " installing plugins the first time
 if firstTimeVundle == 1
@@ -316,17 +311,12 @@ augroup fugitive
     autocmd BufReadPost fugitive://* set bufhidden=delete
 augroup END
 
-if has('win32')
-    " ctrlp settings
-    let g:ctrlp_map = '<Leader>e'
-    " Use the directory you started vim
-    let g:ctrlp_working_path_mode = 0
-    let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\v[\/](\.git|\.hg|\.svn)$',
-      \ 'file': '\.pyc$\|\.pyo$',
-      \ }
-else
-    " fzf settings
-    nnoremap <Leader>e :FZF<CR>
-endif
+" ctrlp settings
+let g:ctrlp_map = '<Leader>e'
+" Use the directory you started vim
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn)$',
+  \ 'file': '\.pyc$\|\.pyo$',
+  \ }
 
