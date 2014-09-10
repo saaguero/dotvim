@@ -24,53 +24,52 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rsi'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-dispatch'
-Bundle 'tommcdo/vim-exchange'
-Bundle 'Raimondi/delimitMate'
-Bundle 'scrooloose/syntastic'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'saaguero/vim-togglelist'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'vim-scripts/matchit.zip'
-Bundle 'gregsexton/gitv'
-Bundle 'majutsushi/tagbar'
-Bundle 'nelstrom/vim-visual-star-search'
-Bundle 'godlygeek/tabular'
-Bundle 'SirVer/ultisnips'
-Bundle 'saaguero/vim-snippets'
-Bundle 'marijnh/tern_for_vim'
-Bundle 'junegunn/seoul256.vim'
-Bundle 'junegunn/goyo.vim'
-Bundle 'rking/ag.vim'
-Bundle 'Peeja/vim-cdo'
-Bundle 'vim-scripts/DirDiff.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'sjl/badwolf'
-Bundle 'manuel-colmenero/vim-simple-session'
-Bundle 'vim-scripts/mru.vim'
-Bundle 'skwp/greplace.vim'
-Bundle 'vasconcelloslf/vim-interestingwords'
-Bundle 'Shougo/neocomplete.vim'
+Plugin 'gmarik/vundle'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rsi'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tommcdo/vim-exchange'
+Plugin 'Raimondi/delimitMate'
+Plugin 'scrooloose/syntastic'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'saaguero/vim-togglelist'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'gregsexton/gitv'
+Plugin 'majutsushi/tagbar'
+Plugin 'godlygeek/tabular'
+Plugin 'SirVer/ultisnips'
+Plugin 'saaguero/vim-snippets'
+Plugin 'marijnh/tern_for_vim'
+Plugin 'junegunn/seoul256.vim'
+Plugin 'junegunn/goyo.vim'
+Plugin 'rking/ag.vim'
+Plugin 'Peeja/vim-cdo'
+Plugin 'vim-scripts/DirDiff.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'sjl/badwolf'
+Plugin 'manuel-colmenero/vim-simple-session'
+Plugin 'vim-scripts/mru.vim'
+Plugin 'skwp/greplace.vim'
+Plugin 'idbrii/vim-mark'
+Plugin 'Shougo/neocomplete.vim'
 if has('win32')
-    " Alternative to fuzzy searcher 'fzf' for windows
-    Bundle 'kien/ctrlp.vim'
+    " alternative to fuzzy searcher 'fzf' for windows
+    Plugin 'kien/ctrlp.vim'
 else
-    Bundle 'junegunn/fzf'
+    Plugin 'junegunn/fzf'
 endif
 
 " installing plugins the first time
 if firstTimeVundle == 1
     echo "Installing Bundles, please ignore key map error messages"
     echo ""
-    :BundleInstall
+    :PluginInstall
 endif
 
 " allow plugins by file type
@@ -227,6 +226,8 @@ nnoremap <leader>S :source $MYVIMRC<cr>
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
 vnoremap > >gv
+" rehighlights the last pasted text
+nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 augroup utils
     autocmd!
@@ -329,13 +330,4 @@ else
     " fzf settings
     nnoremap <Leader>e :FZF<CR>
 endif
-
-" vim-intersesting-words settings
-nnoremap <silent> <leader>1 :call InterestingWords()<cr>
-nnoremap <silent> <leader>0 :call UncolorAllWords()<cr>
-
-" custom scripts
-
-" rehighlights the last pasted text
-nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
