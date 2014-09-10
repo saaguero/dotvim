@@ -234,7 +234,8 @@ augroup utils
     " htmldjango. Therefore just rely on htmldjango for both django and html files
     autocmd BufNewFile,BufRead *.html set filetype=htmldjango
 
-    autocmd BufNewFile,BufRead *.wxs set filetype=xml
+    autocmd BufNewFile,BufRead *.wxs set filetype=wxs.xml
+    autocmd BufNewFile,BufRead *.wxi set filetype=wxi.xml
     autocmd BufNewFile,BufRead *.md set filetype=markdown
 
     " Use xmllint for xml formatting (use gg=G to format the whole document)
@@ -291,6 +292,7 @@ let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips'
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsListSnippets="<c-l>"
 
 " neocomplete settings
 let g:neocomplete#enable_at_startup = 1
