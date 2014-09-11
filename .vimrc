@@ -83,9 +83,16 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 " exceptions
-augroup spaces
+augroup filetypeAndSpaces
     autocmd!
     autocmd FileType html,xml,javascript set shiftwidth=2 tabstop=2 softtabstop=2
+
+    " filetype.vim (included in vim) hasn't have a good autodetection for
+    " htmldjango. Therefore just rely on htmldjango for both django and html files
+    autocmd BufNewFile,BufRead *.html set filetype=htmldjango
+    autocmd BufNewFile,BufRead *.wxs set filetype=wxs.xml
+    autocmd BufNewFile,BufRead *.wxi set filetype=wxi.xml
+    autocmd BufNewFile,BufRead *.md set filetype=markdown
 augroup END
 
 " disabling Background Color Erase (BCE) for looking properly in tmux
@@ -231,14 +238,6 @@ augroup utils
     autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
         \| exe "normal! g'\"" | endif
 
-    " filetype.vim (included in vim) hasn't have a good autodetection for
-    " htmldjango. Therefore just rely on htmldjango for both django and html files
-    autocmd BufNewFile,BufRead *.html set filetype=htmldjango
-
-    autocmd BufNewFile,BufRead *.wxs set filetype=wxs.xml
-    autocmd BufNewFile,BufRead *.wxi set filetype=wxi.xml
-    autocmd BufNewFile,BufRead *.md set filetype=markdown
-
     " Use xmllint for xml formatting (use gg=G to format the whole document)
     autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 
@@ -249,12 +248,8 @@ augroup utils
     " autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 augroup END
 
-" TODO improve find in all files flow
-" open grep and search recursively in current folder
-map <leader>f :grep -Ir --exclude-dir="node_modules" "" *
-                                                    \<left><left><left>
 " clear the search buffer when hitting return
-:nnoremap <silent> <leader><cr> :nohlsearch<cr>
+nnoremap <silent> <leader><cr> :nohlsearch<cr>
 
 " session settings, just save files and current directory
 set sessionoptions=curdir
