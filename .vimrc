@@ -190,26 +190,24 @@ command! -bang W w<bang>
 ca w!! w !sudo tee "%"
 
 " easy system clipboard copy/paste
-vmap <Leader>y "*y
-nmap <Leader>y "*y
-vmap <Leader>d "*d
-nmap <Leader>d "*d
-nmap <Leader>p "*p
-nmap <Leader>P "*P
-vmap <Leader>p "*p
-vmap <Leader>P "*P
+vnoremap <Leader>y "*y
+nnoremap <Leader>y "*y
+nnoremap <Leader>p "*p
+vnoremap <Leader>p "*p
+nnoremap <Leader>P "*P
+vnoremap <Leader>P "*P
 
 " easy windows navigation
-nmap <silent> <c-l> <c-w>l
-nmap <silent> <c-j> <c-w>j
-nmap <silent> <c-h> <c-w>h
-nmap <silent> <c-k> <c-w>k
-nmap <silent> <Leader>s :sp<CR>
-nmap <silent> <Leader>v :vsp<CR>
-nmap <silent> <Leader>o :only<CR>
-nmap <silent> <Leader>w :bw<CR>
-nmap <silent> <Leader>W :bw!<CR>
-nmap <silent> <f4> :NERDTree<CR>
+nnoremap <silent> <c-l> <c-w>l
+nnoremap <silent> <c-j> <c-w>j
+nnoremap <silent> <c-h> <c-w>h
+nnoremap <silent> <c-k> <c-w>k
+nnoremap <silent> <Leader>s :sp<CR>
+nnoremap <silent> <Leader>v :vsp<CR>
+nnoremap <silent> <Leader>o :only<CR>
+nnoremap <silent> <Leader>w :bw<CR>
+nnoremap <silent> <Leader>W :bw!<CR>
+nnoremap <silent> <f4> :NERDTree<CR>
 
 " suppress map for ex mode as it's easy to open it by mistake
 nnoremap Q <nop>
@@ -290,7 +288,7 @@ let delimitMate_expand_cr = 2
 highlight ExtraWhitespace ctermbg=black guibg=black
 match ExtraWhitespace /\s\+$/
 " map for cleaning trailing whitespace
-nmap <F10> :%s/\s\+$//e<CR>
+nnoremap <F10> :%s/\s\+$//e<CR>
 
 " ultisnips settings. Fix to use other keys as it conflicts with YCM and others
 let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips'
@@ -304,20 +302,17 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#disable_auto_complete = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#enable_omni_fallback = 1
-
-" Enable omni completion.
+" enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Define keyword.
+" define keyword.
 if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
 " use <tab> for triggering manual completion
 function! s:check_back_space()
     let col = col('.') - 1
@@ -351,5 +346,5 @@ let g:ctrlp_custom_ignore = {
 " TODO: How to do this with CtrlPMRUFiles?
 " " mru settings
 " " open latest closed file
-" nmap <leader><S-e> :Mru<cr><cr>
+" nnoremap <leader><S-e> :Mru<cr><cr>
 "
