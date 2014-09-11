@@ -54,7 +54,6 @@ Plugin 'vim-scripts/DirDiff.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'sjl/badwolf'
 Plugin 'manuel-colmenero/vim-simple-session'
-Plugin 'vim-scripts/mru.vim'
 Plugin 'skwp/greplace.vim'
 Plugin 'idbrii/vim-mark'
 Plugin 'Shougo/neocomplete.vim'
@@ -72,8 +71,9 @@ endif
 filetype plugin on
 filetype indent on
 
-" Allow to complete on a single-match without showing the popup
-set completeopt=menu
+" Allow to complete on a single-match without showing the popup, and
+" enable preview window
+set completeopt=menu,preview
 " no vi-compatible
 set nocompatible
 " tabs and spaces handling (default)
@@ -110,8 +110,8 @@ set nofoldenable
 set autoread
 " when scrolling, keep cursor 3 lines away from screen border
 set scrolloff=3
-" Complete next full match then cycle with tab.
-set wildmode=full
+" Complete to common part then another <tab> will fully complete first match
+set wildmode=list:longest,full
 set wildmenu
 set cursorline
 " ignorecase is needed for smartcase to work
@@ -240,6 +240,12 @@ augroup utils
 
     " Use xmllint for xml formatting (use gg=G to format the whole document)
     autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+
+    " Fix for automatically closing preview window after leaving insert mode
+    " From http://stackoverflow.com/a/3107159/854676
+    autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+    " Uncomment next line to close preview window on mouse movement
+    " autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 augroup END
 
 " TODO improve find in all files flow
@@ -283,10 +289,6 @@ match ExtraWhitespace /\s\+$/
 " map for cleaning trailing whitespace
 nmap <F10> :%s/\s\+$//e<CR>
 
-" mru settings
-" open latest closed file
-nmap <leader><S-e> :Mru<cr><cr>
-
 " ultisnips settings. Fix to use other keys as it conflicts with YCM and others
 let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips'
 let g:UltiSnipsExpandTrigger="<c-j>"
@@ -298,6 +300,21 @@ let g:UltiSnipsListSnippets="<c-l>"
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#disable_auto_complete = 1
 let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_omni_fallback = 1
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
 " use <tab> for triggering manual completion
 function! s:check_back_space()
     let col = col('.') - 1
@@ -315,7 +332,12 @@ augroup fugitive
 augroup END
 
 " ctrlp settings
-let g:ctrlp_map = '<Leader>e'
+nnoremap <leader>e :CtrlP<cr>
+nnoremap <leader>E :CtrlPMRUFiles<cr>
+nnoremap <leader>gr :CtrlPTag<cr>
+nnoremap <leader>gR :CtrlPBufTagAll<cr>
+" Increase window height
+let g:ctrlp_match_window = 'bottom,order:btt,min:20,max:20,results:20'
 " Use the directory you started vim
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = {
@@ -323,3 +345,8 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.pyc$\|\.pyo$',
   \ }
 
+" TODO: How to do this with CtrlPMRUFiles?
+" " mru settings
+" " open latest closed file
+" nmap <leader><S-e> :Mru<cr><cr>
+"
