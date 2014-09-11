@@ -211,6 +211,9 @@ nmap <silent> <Leader>w :bw<CR>
 nmap <silent> <Leader>W :bw!<CR>
 nmap <silent> <f4> :NERDTree<CR>
 
+" suppress map for ex mode as it's easy to open it by mistake
+nnoremap Q <nop>
+
 " cd to directory of current file
 nnoremap <silent> <leader>cd :cd %:p:h<CR>
 
