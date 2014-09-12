@@ -96,6 +96,8 @@ augroup filetypeAndSpaces
     autocmd BufNewFile,BufRead *.md set filetype=markdown
 augroup END
 
+" Enhance long operations such as executing Macros. See http://goo.gl/H8ch7c
+set lazyredraw
 " disabling Background Color Erase (BCE) for looking properly in tmux
 set t_ut=
 " disabling beeping and flashing on errors
