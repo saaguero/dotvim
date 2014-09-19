@@ -1,6 +1,7 @@
 " vim: fdm=marker ts=2 sts=2 sw=2 fdl=0
 
 " Variables {{{
+let mapleader = "\<Space>"
 let s:is_windows = has('win32') || has('win64')
 "}}}
 
@@ -195,8 +196,6 @@ call plug#end()
 
 " Vim sensible settings {{{
 set nocompatible
-let mapleader = "\<Space>"
-
 set lazyredraw " Enhance operations like macros. See http://goo.gl/H8ch7c
 set t_ut= " disabling Background Color Erase (BCE) for looking properly in tmux
 set noerrorbells novisualbell t_vb= " disabling beeping and flashing on errors
