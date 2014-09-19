@@ -9,21 +9,16 @@ let s:is_windows = has('win32') || has('win64')
 let vimplug=expand('~/.vim/autoload/plug.vim')
 if !filereadable(vimplug)
     echo "Installing vim-plug..."
-    if s:is_windows
-        silent call mkdir(expand("~/.vim/autoload", 1), 'p')
-        execute '!curl -fLo '.expand("~/.vim/autoload/plug.vim", 1).' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    else
-        silent !mkdir -p ~/.vim/autoload
-        execute '!curl -fLo '.expand("~/.vim/autoload/plug.vim", 1).'
-          \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    endif
+    silent call mkdir(expand("~/.vim/autoload", 1), 'p')
+    execute '!curl -fLo '.expand("~/.vim/autoload/plug.vim", 1).' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     :qa!
 endif
 
 if s:is_windows
   set rtp+=~/.vim
-  call plug#begin('~/.vim/plugged')
 endif
+
+call plug#begin('~/.vim/plugged')
 let g:plug_url_format = 'https://github.com/%s.git'
 "}}}
 
