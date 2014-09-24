@@ -23,7 +23,9 @@ let g:plug_url_format = 'https://github.com/%s.git'
 "}}}
 
 " Plugin settings {{{
-Plug 'ervandew/supertab'
+Plug 'ervandew/supertab' "{{{
+  let g:SuperTabDefaultCompletionType = "context"
+"}}}
 Plug 'tomtom/tcomment_vim'
 Plug 'bling/vim-airline' "{{{
   let g:airline_theme = 'zenburn'
@@ -141,14 +143,12 @@ Plug 'scrooloose/syntastic' "{{{
   let g:syntastic_full_redraws = 0
 "}}}
 Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
-  " use <c-space> for manual completion
   let g:jedi#popup_on_dot = 0
+  " just rely on supertab trigger
+  let g:jedi#completions_command = ""
   " this prevents jedi to mess with completeopt
   let g:jedi#auto_vim_configuration = 0
   let g:jedi#popup_select_first = 0
-  let g:jedi#completions_enabled = 0
-  " just rely on neocomplete trigger <tab>
-  let g:jedi#completions_command = ""
   let g:jedi#goto_assignments_command = "<leader>jg"
   let g:jedi#goto_definitions_command = "<leader>jd"
   let g:jedi#usages_command = "<leader>jn"
