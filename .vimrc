@@ -23,6 +23,7 @@ let g:plug_url_format = 'https://github.com/%s.git'
 "}}}
 
 " Plugin settings {{{
+Plug 'ervandew/supertab'
 Plug 'tomtom/tcomment_vim'
 Plug 'bling/vim-airline' "{{{
   let g:airline_theme = 'zenburn'
@@ -52,20 +53,6 @@ Plug 'kristijanhusak/vim-multiple-cursors' "{{{
   let g:multi_cursor_prev_key='<C-p>'
   let g:multi_cursor_skip_key='<C-k>'
   let g:multi_cursor_quit_key='<Esc>'
-
-  "" Called once right before you start selecting multiple cursors
-  function! Multiple_cursors_before()
-    if exists(':NeoCompleteLock')==2
-      exe 'NeoCompleteLock'
-    endif
-  endfunction
-
-  " Called once only when the multiple selection is canceled (default <Esc>)
-  function! Multiple_cursors_after()
-    if exists(':NeoCompleteUnlock')==2
-      exe 'NeoCompleteUnlock'
-    endif
-  endfunction
 "}}}
 Plug 'saaguero/vim-togglelist'
 Plug 'nathanaelkane/vim-indent-guides', { 'on': 'IndentGuidesToggle' } "{{{
@@ -106,37 +93,6 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
 "}}}
 Plug 'sjl/badwolf'
 Plug 'idbrii/vim-mark'
-Plug 'shougo/neocomplete.vim' "{{{
-  let g:neocomplete#enable_at_startup = 1
-  let g:neocomplete#disable_auto_complete = 1
-  let g:neocomplete#enable_smart_case = 1
-  " Search from neocomplete, omni candidates, vim keywords.
-  let g:neocomplete#fallback_mappings = ["\<C-x>\<C-o>", "\<C-x>\<C-n>"]
-  " enable omni completion.
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=jedi#completions
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-  " define keyword.
-  if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-  endif
-  let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-  if !exists('g:neocomplete#force_omni_input_patterns')
-    let g:neocomplete#force_omni_input_patterns = {}
-  endif
-  let g:neocomplete#force_omni_input_patterns.python =
-        \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-  " use <tab> for triggering manual completion
-  function! s:check_back_space()
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-  endfunction
-  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" :
-        \ <SID>check_back_space() ? "\<TAB>" :
-        \ neocomplete#start_manual_complete()
-"}}}
 Plug 'kien/ctrlp.vim' "{{{
   nnoremap <leader>e :CtrlP<cr>
   nnoremap <leader>E :CtrlPMRUFiles<cr>
