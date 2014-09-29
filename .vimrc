@@ -296,8 +296,6 @@ nnoremap <silent> <c-l> <c-w>l
 nnoremap <silent> <c-j> <c-w>j
 nnoremap <silent> <c-h> <c-w>h
 nnoremap <silent> <c-k> <c-w>k
-nnoremap <silent> <Leader>s :sp<CR>
-nnoremap <silent> <Leader>v :vsp<CR>
 nnoremap <silent> <Leader>o :only<CR>
 nnoremap <silent> <Leader>w :bw<CR>
 nnoremap <silent> <Leader>W :bw!<CR>
