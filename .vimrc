@@ -164,6 +164,8 @@ call plug#end()
 
 " Vim sensible settings {{{
 set nocompatible
+set encoding=utf-8
+set listchars=trail:.,tab:>\ ,eol:$ " Chars to show when enabling 'set list'
 set lazyredraw " Enhance operations like macros. See http://goo.gl/H8ch7c
 set t_ut= " disabling Background Color Erase (BCE) for looking properly in tmux
 set noerrorbells novisualbell vb t_vb= " disabling beeping and flashing on errors
