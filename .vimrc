@@ -27,6 +27,9 @@ Plug 'ervandew/supertab' "{{{
   let g:SuperTabDefaultCompletionType = "context"
 "}}}
 Plug 'tomtom/tcomment_vim'
+Plug 'Keithbsmiley/investigate.vim' "{{{
+  let g:investigate_use_dash=1
+"}}}
 Plug 'bling/vim-airline' "{{{
   let g:airline_theme = 'zenburn'
   let g:airline#extensions#whitespace#enabled = 0
