@@ -27,6 +27,7 @@ Plug 'ervandew/supertab' "{{{
   let g:SuperTabDefaultCompletionType = "context"
 "}}}
 Plug 'tomtom/tcomment_vim'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'Keithbsmiley/investigate.vim' "{{{
   let g:investigate_use_dash=1
 "}}}
