@@ -36,6 +36,7 @@ Plug 'bling/vim-airline' "{{{
   let g:airline#extensions#whitespace#enabled = 0
   let g:airline#extensions#tagbar#enabled = 0
   let g:airline#extensions#tabline#enabled = 1
+  let g:airline_section_b = '%{gutentags#statusline("[Generating TAGS...]")}'
 "}}}
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive' "{{{
