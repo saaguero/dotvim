@@ -160,6 +160,10 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
   let g:jedi#documentation_command = '<leader>jk'
   let g:jedi#rename_command = "<leader>jr"
 "}}}
+Plug 'ntpeters/vim-better-whitespace' "{{{
+  nnoremap <F10> :StripWhitespace<cr>
+  vnoremap <F10> :StripWhitespace<cr>
+"}}}
 
 call plug#end()
 "}}}
@@ -332,10 +336,4 @@ augroup END
 
 " clear the search buffer when hitting return
 nnoremap <silent> <leader><cr> :nohlsearch<cr>
-
-" trailing whitespace highlighting
-highlight ExtraWhitespace ctermbg=black guibg=black
-match ExtraWhitespace /\s\+$/
-" map for cleaning trailing whitespace
-nnoremap <F10> :%s/\s\+$//e<CR>
 "}}}
