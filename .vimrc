@@ -163,6 +163,7 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
 Plug 'ntpeters/vim-better-whitespace' "{{{
   nnoremap <F10> :StripWhitespace<cr>
   vnoremap <F10> :StripWhitespace<cr>
+  highlight ExtraWhitespace ctermbg=black guibg=black
 "}}}
 
 call plug#end()
