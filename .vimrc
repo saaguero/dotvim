@@ -75,7 +75,7 @@ Plug 'majutsushi/tagbar' "{{{
   nnoremap <silent> <F3> :TagbarToggle<CR>
 "}}}
 Plug 'sirver/ultisnips', { 'on': [] } "{{{
-  let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips'
+  let g:UltiSnipsSnippetsDir = '~/.vim/plugged/vim-snippets/UltiSnips'
   let g:UltiSnipsExpandTrigger="<c-j>"
   let g:UltiSnipsJumpForwardTrigger="<c-j>"
   let g:UltiSnipsJumpBackwardTrigger="<c-k>"
