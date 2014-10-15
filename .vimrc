@@ -97,6 +97,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
   nnoremap <silent> <F5> :NERDTreeFind<CR>
   let NERDTreeShowHidden=1
 "}}}
+Plug 'endel/vim-github-colorscheme'
 Plug 'sjl/badwolf'
 Plug 'idbrii/vim-mark'
 Plug 'kien/ctrlp.vim' "{{{
