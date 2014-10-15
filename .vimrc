@@ -120,9 +120,11 @@ Plug 'kien/ctrlp.vim' "{{{
   let g:ctrlp_clear_cache_on_exit = 0
   " Set no file limit, we are building a big project
   let g:ctrlp_max_files = 0
+  let g:ctrlp_lazy_update = 250
   " Use pymatcher to improve performance when filtering the resuls
   let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 "}}}
+Plug 'ivalkeen/vim-ctrlp-tjump'
 Plug 'felikz/ctrlp-py-matcher'
 Plug 'justinmk/vim-gtfo'
 Plug 'vim-scripts/html-autoclosetag'
