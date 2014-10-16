@@ -334,4 +334,8 @@ augroup END
 
 " clear the search buffer when hitting return
 nnoremap <silent> <leader><cr> :nohlsearch<cr>
+
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
 "}}}
