@@ -277,10 +277,6 @@ colorscheme badwolf
 "}}}
 
 " Custom utils/mappings {{{
-" easy scroll movement
-noremap J 5j
-noremap K 5k
-
 " avoid common typos
 command! -bang Q q<bang>
 command! -bang W w<bang>
