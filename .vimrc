@@ -6,11 +6,10 @@ let s:is_windows = has('win32') || has('win64')
 "}}}
 
 " Setting up vim-plug as the package manager {{{
-let vimplug=expand('~/.vim/autoload/plug.vim')
-if !filereadable(vimplug)
+if !filereadable(expand("~/.vim/autoload/plug.vim"))
     echo "Installing vim-plug..."
     silent call mkdir(expand("~/.vim/autoload", 1), 'p')
-    execute '!curl -fLo '.expand("~/.vim/autoload/plug.vim", 1).' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    execute "!curl -fLo ".expand("~/.vim/autoload/plug.vim", 1)." https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
     :qa!
 endif
 
