@@ -166,6 +166,7 @@ Plug 'ntpeters/vim-better-whitespace' "{{{
   vnoremap <F10> :StripWhitespace<cr>
   highlight ExtraWhitespace ctermbg=black guibg=black
 "}}}
+Plug 'drmikehenry/vim-fontsize'
 
 call plug#end()
 "}}}
