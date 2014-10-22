@@ -262,6 +262,8 @@ if has("gui_running")
     set guifont=Consolas:h11
   endif
   set guioptions=
+  " disable blinking cursor
+  set guicursor+=a:blinkon0
 else
   " use 256
   set term=xterm
