@@ -177,10 +177,11 @@ set encoding=utf-8
 set listchars=trail:.,tab:>\ ,eol:$ " Chars to show when enabling 'set list'
 set lazyredraw " Enhance operations like macros. See http://goo.gl/H8ch7c
 set t_ut= " disabling Background Color Erase (BCE) for looking properly in tmux
-set noerrorbells novisualbell vb t_vb= " disabling beeping and flashing on errors
 set laststatus=2 " always show status bar
 set incsearch
 set hlsearch
+set noerrorbells visualbell t_vb= " disable beeping and flashing on errors
+autocmd GUIEnter * set visualbell t_vb= " for gvim
 syntax on
 set number
 set backspace=2 " set backspace to work as expected
