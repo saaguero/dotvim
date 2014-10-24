@@ -61,12 +61,10 @@ Plug 'kristijanhusak/vim-multiple-cursors' "{{{
   let g:multi_cursor_quit_key='<Esc>'
 "}}}
 Plug 'saaguero/vim-togglelist'
-Plug 'nathanaelkane/vim-indent-guides', { 'on': 'IndentGuidesToggle' } "{{{
-  nnoremap <silent> <F2> :IndentGuidesToggle<cr>
-  let g:indent_guides_enable_on_vim_startup = 0
-  let g:indent_guides_guide_size = 1
-  let g:indent_guides_start_level = 2
-  let g:airline#extensions#disable_rtp_load = 1
+Plug 'Yggdroot/indentLine' "{{{
+  nnoremap <silent> <F2> :IndentLinesToggle<cr>
+  let g:indentLine_char = '┊'
+  let g:indentLine_enabled = 0
 "}}}
 Plug 'vim-scripts/matchit.zip'
 Plug 'gregsexton/gitv', { 'on': 'Gitv' }
