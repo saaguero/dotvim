@@ -101,8 +101,8 @@ Plug 'idbrii/vim-mark'
 Plug 'kien/ctrlp.vim' "{{{
   nnoremap <leader>e :CtrlP<cr>
   nnoremap <leader>E :CtrlPMRUFiles<cr>
-  nnoremap <leader>t :CtrlPTag<cr>
-  nnoremap <leader>T :CtrlPBufTagAll<cr>
+  nnoremap <leader>t :CtrlPBufTag<cr>
+  nnoremap <leader>T :CtrlPTag<cr>
 
   " Increase window height
   let g:ctrlp_match_window = 'bottom,order:btt,min:20,max:20,results:20'
