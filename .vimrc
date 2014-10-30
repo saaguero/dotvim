@@ -304,8 +304,8 @@ nnoremap <silent> <c-j> <c-w>j
 nnoremap <silent> <c-h> <c-w>h
 nnoremap <silent> <c-k> <c-w>k
 nnoremap <silent> <Leader>o :only<CR>
-nnoremap <silent> <Leader>w :bp <bar> sp <bar> bn <bar> bd<cr>
-nnoremap <silent> <Leader>W :bp <bar> sp <bar> bn <bar> bd!<cr>
+nnoremap <silent> <Leader>w :bd<CR>
+nnoremap <silent> <Leader>W :bd!<CR>
 
 " cd to directory of current file
 nnoremap <silent> <leader>cd :cd %:p:h<CR>
