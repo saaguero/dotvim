@@ -103,6 +103,7 @@ Plug 'kien/ctrlp.vim' "{{{
   nnoremap <leader>E :CtrlPMRUFiles<cr>
   nnoremap <leader>t :CtrlPBufTag<cr>
   nnoremap <leader>T :CtrlPTag<cr>
+  nnoremap <leader>a :CtrlPBuffer<cr>
 
   " Increase window height
   let g:ctrlp_match_window = 'bottom,order:btt,min:20,max:20,results:20'
