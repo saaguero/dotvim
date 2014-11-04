@@ -253,6 +253,16 @@ augroup filetypeAndSpaces
   autocmd FileType python setlocal foldmethod=indent
   autocmd FileType vim setlocal foldmethod=indent
 augroup END
+
+" Syntax folding
+let javaScript_fold=1
+let perl_fold=1
+let php_folding=1
+let r_syntax_folding=1
+let ruby_fold=1
+let sh_fold_enabled=1
+let vimsyn_folding='af'
+let xml_syntax_folding=1
 "}}}
 
 " GUI setttings {{{
