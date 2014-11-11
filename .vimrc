@@ -126,7 +126,7 @@ Plug 'kien/ctrlp.vim' "{{{
 Plug 'ivalkeen/vim-ctrlp-tjump'
 Plug 'felikz/ctrlp-py-matcher'
 Plug 'justinmk/vim-gtfo'
-Plug 'vim-scripts/html-autoclosetag'
+Plug 'saaguero/html-autoclosetag'
 Plug 'dkprice/vim-easygrep' "{{{
   " don't know why the next setting is not working
   " https://github.com/dkprice/vim-easygrep/issues/11
