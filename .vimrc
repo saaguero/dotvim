@@ -169,13 +169,13 @@ Plug 'dkprice/vim-easygrep' "{{{
   endif
 "}}}
 Plug 'saaguero/vim-scriptease', { 'for': 'vim' }
-Plug 'scrooloose/syntastic' "{{{
-  " disable executing on file save. use the command to run the checks
-  let g:syntastic_mode_map = { "mode": "passive",
-        \ "active_filetypes": [],
-        \ "passive_filetypes": [] }
-  let g:syntastic_full_redraws = 0
-"}}}
+" Plug 'scrooloose/syntastic' "{{{
+"   " disable executing on file save. use the command to run the checks
+"   let g:syntastic_mode_map = { "mode": "passive",
+"         \ "active_filetypes": [],
+"         \ "passive_filetypes": [] }
+"   let g:syntastic_full_redraws = 0
+" "}}}
 Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
   let g:jedi#popup_on_dot = 0
   " just rely on supertab trigger
