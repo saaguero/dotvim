@@ -121,7 +121,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
 Plug 'endel/vim-github-colorscheme'
 Plug 'sjl/badwolf'
 Plug 'idbrii/vim-mark'
-Plug 'kien/ctrlp.vim' "{{{
+Plug 'ctrlpvim/ctrlp.vim' "{{{
   nnoremap <leader>e :CtrlP<cr>
   nnoremap <leader>E :CtrlPMRUFiles<cr>
   nnoremap <leader>t :CtrlPBufTag<cr>
@@ -137,14 +137,19 @@ Plug 'kien/ctrlp.vim' "{{{
         \ 'file': '\.pyc$\|\.pyo$',
         \ }
 
+  " On multiple files show the first one and hide the others
+  let g:ctrlp_open_multiple_files = '1jr'
   " Do not clear filenames cache, to improve CtrlP startup
-  " You can manualy clear it by <F5>
+  " You can manualy regenerate it with <F5>
   let g:ctrlp_clear_cache_on_exit = 0
-  " Set no file limit, we are building a big project
+  " Set no file limit as we are building a big project
   let g:ctrlp_max_files = 0
   let g:ctrlp_lazy_update = 250
   " Use pymatcher to improve performance when filtering the resuls
   let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+  " Add custom ctag types. Check that you have proper rule in ~/.ctags
+  let g:ctrlp_buftag_types = { 'ant': '--language-force=ant' }
 "}}}
 Plug 'ivalkeen/vim-ctrlp-tjump'
 Plug 'felikz/ctrlp-py-matcher'
