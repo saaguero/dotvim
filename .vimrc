@@ -42,6 +42,11 @@ Plug 'lorry-lee/visual_studio.vim' "{{{
 "}}}
 endif
 "}}}
+Plug 'haya14busa/incsearch.vim' "{{{
+  map /  <Plug>(incsearch-forward)
+  map ?  <Plug>(incsearch-backward)
+  map g/ <Plug>(incsearch-stay)
+"}}}
 Plug 'tomtom/tcomment_vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'Keithbsmiley/investigate.vim' "{{{
