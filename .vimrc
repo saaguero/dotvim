@@ -151,7 +151,11 @@ Plug 'kien/ctrlp.vim' "{{{
   " Add custom ctag types. Check that you have proper rule in ~/.ctags
   let g:ctrlp_buftag_types = { 'ant': '--language-force=ant' }
 "}}}
-Plug 'ivalkeen/vim-ctrlp-tjump'
+Plug 'ivalkeen/vim-ctrlp-tjump' "{{{
+  nnoremap <c-]> :CtrlPtjump<cr>
+  vnoremap <c-]> :CtrlPtjumpVisual<cr>
+  let g:ctrlp_tjump_only_silent = 1
+"}}}
 Plug 'felikz/ctrlp-py-matcher'
 Plug 'justinmk/vim-gtfo'
 Plug 'saaguero/html-autoclosetag'
