@@ -140,11 +140,9 @@ Plug 'kien/ctrlp.vim' "{{{
 
   " On multiple files show the first one and hide the others
   let g:ctrlp_open_multiple_files = '1jr'
-  " Do not clear filenames cache, to improve CtrlP startup
-  " You can manualy regenerate it with <F5>
-  let g:ctrlp_clear_cache_on_exit = 0
   " Set no file limit as we are building a big project
   let g:ctrlp_max_files = 0
+  " Improve search time given a delay
   let g:ctrlp_lazy_update = 250
   " Use pymatcher to improve performance when filtering the resuls
   let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
