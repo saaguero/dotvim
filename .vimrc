@@ -47,6 +47,7 @@ Plug 'haya14busa/incsearch.vim' "{{{
   map ?  <Plug>(incsearch-backward)
   map g/ <Plug>(incsearch-stay)
 "}}}
+Plug 'ekalinin/Dockerfile.vim'
 Plug 'Konfekt/FastFold'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tomtom/tcomment_vim'
