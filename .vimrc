@@ -7,10 +7,10 @@ let s:is_windows = has('win32') || has('win64')
 
 " Setting up vim-plug as the package manager {{{
 if !filereadable(expand("~/.vim/autoload/plug.vim"))
-    echo "Installing vim-plug..."
+    echo "Installing vim-plug and plugins. Restart vim after finishing the process."
     silent call mkdir(expand("~/.vim/autoload", 1), 'p')
     execute "!curl -fLo ".expand("~/.vim/autoload/plug.vim", 1)." https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-    :qa!
+    autocmd VimEnter * PlugInstall
 endif
 
 if s:is_windows
