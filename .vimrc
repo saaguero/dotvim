@@ -324,6 +324,14 @@ colorscheme badwolf
 "}}}
 
 " Custom utils/mappings {{{
+" Filter command history the same way as <Up> <Down> do
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
+" Source selection or line (from sjl/dotfiles)
+vnoremap <leader>S y:@"<cr>
+nnoremap <leader>S ^vg_y:@"<cr>
+
 " avoid common typos
 command! -bang Q q<bang>
 command! -bang W w<bang>
