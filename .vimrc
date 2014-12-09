@@ -7,10 +7,10 @@ let s:is_windows = has('win32') || has('win64')
 
 " Setting up vim-plug as the package manager {{{
 if !filereadable(expand("~/.vim/autoload/plug.vim"))
-    echo "Installing vim-plug..."
+    echo "Installing vim-plug and plugins. Restart vim after finishing the process."
     silent call mkdir(expand("~/.vim/autoload", 1), 'p')
     execute "!curl -fLo ".expand("~/.vim/autoload/plug.vim", 1)." https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-    :qa!
+    autocmd VimEnter * PlugInstall
 endif
 
 if s:is_windows
@@ -25,6 +25,34 @@ let g:plug_url_format = 'https://github.com/%s.git'
 Plug 'ervandew/supertab' "{{{
   let g:SuperTabDefaultCompletionType = "context"
 "}}}
+
+if s:is_windows "{{{
+Plug 'lorry-lee/visual_studio.vim' "{{{
+  let g:visual_studio_mapping = 0
+  nmap <silent> <Leader><Leader>vg :call DTEGetFile()<cr>
+  nmap <silent> <Leader><Leader>vp :call DTEPutFile()<cr>
+  nmap <silent> <Leader><Leader>vt :call DTETaskList()<cr>
+  nmap <silent> <Leader><Leader>ve :call DTEErrorList()<cr>
+  nmap <silent> <Leader><Leader>vo :call DTEOutput()<cr>
+  nmap <silent> <Leader><Leader>vb :call DTEBuildSolution()<cr>
+  nmap <silent> <Leader><Leader>vu :call DTEBuildStartupProject()<cr>
+  nmap <silent> <Leader><Leader>vc :call DTECompileFile()<cr>
+  nmap <silent> <Leader><Leader>vs :call DTEGetSolutions()<cr>
+  nmap <silent> <Leader><Leader>vj :call DTEGetProjects()<cr>
+"}}}
+endif
+"}}}
+Plug 'haya14busa/incsearch.vim' "{{{
+  map /  <Plug>(incsearch-forward)
+  map ?  <Plug>(incsearch-backward)
+  map g/ <Plug>(incsearch-stay)
+"}}}
+Plug 'sjl/gundo.vim' "{{{
+  nnoremap <leader>gu :GundoToggle<cr>
+"}}}
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'Konfekt/FastFold'
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tomtom/tcomment_vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'Keithbsmiley/investigate.vim' "{{{
@@ -34,7 +62,7 @@ Plug 'bling/vim-airline' "{{{
   let g:airline_theme = 'zenburn'
   let g:airline#extensions#whitespace#enabled = 0
   let g:airline#extensions#tagbar#enabled = 0
-  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#enabled = 0
   let g:airline#extensions#disable_rtp_load = 1
 "}}}
 Plug 'tpope/vim-surround'
@@ -59,6 +87,8 @@ Plug 'kristijanhusak/vim-multiple-cursors' "{{{
   let g:multi_cursor_prev_key='<C-p>'
   let g:multi_cursor_skip_key='<C-k>'
   let g:multi_cursor_quit_key='<Esc>'
+  let g:multi_cursor_normal_maps  = {'f': 1, 't': 1, 'F': 1, 'T':1,
+                                        \ 'c': 1, 'd': 1}
 "}}}
 Plug 'saaguero/vim-togglelist'
 Plug 'Yggdroot/indentLine' "{{{
@@ -95,7 +125,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
   nnoremap <silent> <F5> :NERDTreeFind<CR>
   let NERDTreeShowHidden=1
 "}}}
-Plug 'endel/vim-github-colorscheme'
+Plug 'saaguero/vim-github-colorscheme'
 Plug 'sjl/badwolf'
 Plug 'idbrii/vim-mark'
 Plug 'kien/ctrlp.vim' "{{{
@@ -114,16 +144,23 @@ Plug 'kien/ctrlp.vim' "{{{
         \ 'file': '\.pyc$\|\.pyo$',
         \ }
 
-  " Do not clear filenames cache, to improve CtrlP startup
-  " You can manualy clear it by <F5>
-  let g:ctrlp_clear_cache_on_exit = 0
-  " Set no file limit, we are building a big project
+  " On multiple files show the first one and hide the others
+  let g:ctrlp_open_multiple_files = '1jr'
+  " Set no file limit as we are building a big project
   let g:ctrlp_max_files = 0
+  " Improve search time given a delay
   let g:ctrlp_lazy_update = 250
   " Use pymatcher to improve performance when filtering the resuls
   let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+  " Add custom ctag types. Check that you have proper rule in ~/.ctags
+  let g:ctrlp_buftag_types = { 'ant': '--language-force=ant' }
 "}}}
-Plug 'ivalkeen/vim-ctrlp-tjump'
+Plug 'ivalkeen/vim-ctrlp-tjump' "{{{
+  nnoremap <c-]> :CtrlPtjump<cr>
+  vnoremap <c-]> :CtrlPtjumpVisual<cr>
+  let g:ctrlp_tjump_only_silent = 1
+"}}}
 Plug 'felikz/ctrlp-py-matcher'
 Plug 'justinmk/vim-gtfo'
 Plug 'saaguero/html-autoclosetag'
@@ -141,13 +178,13 @@ Plug 'dkprice/vim-easygrep' "{{{
   endif
 "}}}
 Plug 'saaguero/vim-scriptease', { 'for': 'vim' }
-Plug 'scrooloose/syntastic' "{{{
-  " disable executing on file save. use the command to run the checks
-  let g:syntastic_mode_map = { "mode": "passive",
-        \ "active_filetypes": [],
-        \ "passive_filetypes": [] }
-  let g:syntastic_full_redraws = 0
-"}}}
+" Plug 'scrooloose/syntastic' "{{{
+"   " disable executing on file save. use the command to run the checks
+"   let g:syntastic_mode_map = { "mode": "passive",
+"         \ "active_filetypes": [],
+"         \ "passive_filetypes": [] }
+"   let g:syntastic_full_redraws = 0
+" "}}}
 Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
   let g:jedi#popup_on_dot = 0
   " just rely on supertab trigger
@@ -291,6 +328,14 @@ colorscheme badwolf
 "}}}
 
 " Custom utils/mappings {{{
+" Filter command history the same way as <Up> <Down> do
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
+" Source selection or line (from sjl/dotfiles)
+vnoremap <leader>S y:@"<cr>
+nnoremap <leader>S ^vg_y:@"<cr>
+
 " avoid common typos
 command! -bang Q q<bang>
 command! -bang W w<bang>
