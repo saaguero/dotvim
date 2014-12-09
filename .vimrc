@@ -50,7 +50,6 @@ Plug 'haya14busa/incsearch.vim' "{{{
 Plug 'sjl/gundo.vim' "{{{
   nnoremap <leader>gu :GundoToggle<cr>
 "}}}
-Plug 'bronson/vim-visual-star-search'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'Konfekt/FastFold'
 Plug 'octol/vim-cpp-enhanced-highlight'
