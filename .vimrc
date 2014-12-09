@@ -88,6 +88,8 @@ Plug 'kristijanhusak/vim-multiple-cursors' "{{{
   let g:multi_cursor_prev_key='<C-p>'
   let g:multi_cursor_skip_key='<C-k>'
   let g:multi_cursor_quit_key='<Esc>'
+  let g:multi_cursor_normal_maps  = {'f': 1, 't': 1, 'F': 1, 'T':1,
+                                        \ 'c': 1, 'd': 1}
 "}}}
 Plug 'saaguero/vim-togglelist'
 Plug 'Yggdroot/indentLine' "{{{
