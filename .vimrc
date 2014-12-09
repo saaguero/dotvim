@@ -47,7 +47,9 @@ Plug 'haya14busa/incsearch.vim' "{{{
   map ?  <Plug>(incsearch-backward)
   map g/ <Plug>(incsearch-stay)
 "}}}
-Plug 'sjl/gundo.vim'
+Plug 'sjl/gundo.vim' "{{{
+  nnoremap <leader>gu :GundoToggle<cr>
+"}}}
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'Konfekt/FastFold'
 Plug 'octol/vim-cpp-enhanced-highlight'
