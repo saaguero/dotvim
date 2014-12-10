@@ -53,7 +53,7 @@ Plug 'sjl/gundo.vim' "{{{
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'Konfekt/FastFold'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-commentary'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'Keithbsmiley/investigate.vim' "{{{
   let g:investigate_use_dash=1
