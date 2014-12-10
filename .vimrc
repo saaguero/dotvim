@@ -164,18 +164,8 @@ Plug 'ivalkeen/vim-ctrlp-tjump' "{{{
 Plug 'felikz/ctrlp-py-matcher'
 Plug 'justinmk/vim-gtfo'
 Plug 'saaguero/html-autoclosetag'
-Plug 'dkprice/vim-easygrep' "{{{
-  " don't know why the next setting is not working
-  " https://github.com/dkprice/vim-easygrep/issues/11
-  let g:EasyGrepReplaceWindowMode = 2
-  " Always Search or Replace Recursively
-  let g:EasyGrepRecursive=1
-  " Use grepprg
-  let g:EasyGrepCommand = 1
-  if executable('ag')
-    set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
-    set grepformat=%f:%l:%c:%m
-  endif
+Plug 'rking/ag.vim' "{{{
+  nnoremap <leader>gg :Ag!<cr>
 "}}}
 Plug 'saaguero/vim-scriptease', { 'for': 'vim' }
 " Plug 'scrooloose/syntastic' "{{{
