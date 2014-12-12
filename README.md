@@ -1,5 +1,3 @@
-dotvim
-======
 My cross-platform .vimrc
 
 # Prerequisites
@@ -17,16 +15,16 @@ My cross-platform .vimrc
 - [Ag](https://github.com/ggreer/the_silver_searcher)
   - For Windows you can easily install it using [Chocolatey](http://chocolatey.org/)
 
-## Vim 7.4+ compiled with python/ruby/lua
+# Vim 7.4+ compiled with python/ruby/lua
 
-### Mac
+## Mac
 - `brew install macvim --with-cscope --with-lua --HEAD`
     - Use `macvim -v` for terminal vim
 
-### Ubuntu
+## Ubuntu
 - Compile from scratch following this [guide](http://zaiste.net/2013/05/compiling_vim_with_ruby_and_python_support_on_ubuntu/)
 
-### Windows
+## Windows
 - Use the latest compiled version from [here](http://solar-blogg.blogspot.ca/p/vim-build.html)
 - You can use terminal vim in Windows if you want, I recommend using it with [cmder](http://bliker.github.io/cmder/)
 
