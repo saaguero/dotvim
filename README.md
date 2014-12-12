@@ -1,5 +1,3 @@
-My cross-platform .vimrc
-
 # Prerequisites
 - Git, check that is in your `$PATH` (or `%PATH%` in Windows)
 
