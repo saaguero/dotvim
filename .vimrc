@@ -50,6 +50,7 @@ Plug 'haya14busa/incsearch.vim' "{{{
 Plug 'sjl/gundo.vim' "{{{
   nnoremap <leader>gu :GundoToggle<cr>
 "}}}
+Plug 'moll/vim-bbye'
 Plug 'quanganhdo/grb256'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'Konfekt/FastFold'
@@ -353,8 +354,8 @@ nnoremap <silent> <c-j> <c-w>j
 nnoremap <silent> <c-h> <c-w>h
 nnoremap <silent> <c-k> <c-w>k
 nnoremap <silent> <Leader>o :only<CR>
-nnoremap <silent> <Leader>w :bd<CR>
-nnoremap <silent> <Leader>W :bd!<CR>
+nnoremap <silent> <Leader>w :Bdelete<CR>
+nnoremap <silent> <Leader>W :Bdelete!<CR>
 
 " cd to directory of current file
 nnoremap <silent> <leader>cd :cd %:p:h<CR>
