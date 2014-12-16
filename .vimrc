@@ -214,7 +214,7 @@ set hlsearch
 set noerrorbells visualbell t_vb= " disable beeping and flashing on errors
 autocmd GUIEnter * set visualbell t_vb= " for gvim
 syntax on
-set number
+set nonumber
 set backspace=2 " set backspace to work as expected
 set autoread " automatically reload file if it changed
 set scrolloff=3 " when scrolling, keep cursor 3 lines away from screen border
