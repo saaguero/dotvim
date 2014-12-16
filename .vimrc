@@ -50,6 +50,8 @@ Plug 'haya14busa/incsearch.vim' "{{{
 Plug 'sjl/gundo.vim' "{{{
   nnoremap <leader>gu :GundoToggle<cr>
 "}}}
+Plug 'kana/vim-textobj-user'
+Plug 'bps/vim-textobj-python'
 Plug 'moll/vim-bbye'
 Plug 'quanganhdo/grb256'
 Plug 'ekalinin/Dockerfile.vim'
