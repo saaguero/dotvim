@@ -52,7 +52,10 @@ Plug 'sjl/gundo.vim' "{{{
 "}}}
 Plug 'kana/vim-textobj-user'
 Plug 'bps/vim-textobj-python'
-Plug 'moll/vim-bbye'
+Plug 'moll/vim-bbye' "{{{
+  nnoremap <silent> <Leader>w :Bdelete<CR>
+  nnoremap <silent> <Leader>W :Bdelete!<CR>
+"}}}
 Plug 'quanganhdo/grb256'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'Konfekt/FastFold'
@@ -238,6 +241,7 @@ set shellslash " used forward slashes on Windows when expanding paths
 set complete-=i " remove scanning include files for completion as it is slow
 set completeopt=menu " only show completion popup on two or more options
 set splitright splitbelow " puts new split/vsplit right/below
+set winwidth=80
 set display+=lastline " show as much as possible of the last line instead of @
 set foldenable " enable folds by default
 set foldmethod=syntax " fold via syntax of file
@@ -355,9 +359,6 @@ nnoremap <silent> <c-l> <c-w>l
 nnoremap <silent> <c-j> <c-w>j
 nnoremap <silent> <c-h> <c-w>h
 nnoremap <silent> <c-k> <c-w>k
-nnoremap <silent> <Leader>o :only<CR>
-nnoremap <silent> <Leader>w :Bdelete<CR>
-nnoremap <silent> <Leader>W :Bdelete!<CR>
 
 " cd to directory of current file
 nnoremap <silent> <leader>cd :cd %:p:h<CR>
