@@ -234,7 +234,7 @@ set showcmd
 set shortmess+=I " avoid splashscreen
 set mouse=a
 set textwidth=80
-" allow to edit a file without saving current buffer set colorcolumn=80
+" allow to edit a file without saving current buffer
 set hidden
 set history=1000 " increase history, default is 20
 set shellslash " used forward slashes on Windows when expanding paths
@@ -246,7 +246,6 @@ set display+=lastline " show as much as possible of the last line instead of @
 set foldenable " enable folds by default
 set foldmethod=syntax " fold via syntax of file
 set foldlevelstart=99 " open all folds by default
-" set tags=tags;/
 
 filetype plugin indent on " allow plugins and auto indention for filetypes
 
@@ -307,9 +306,11 @@ if has("gui_running")
   if has("gui_macvim")
     set guifont=Consolas:h15
   elseif has("gui_win32")
+    " open maximize in windows
     au GUIEnter * simalt ~x
     set guifont=Consolas:h11
   endif
+  " disable all UI options
   set guioptions=
   " disable blinking cursor
   set guicursor+=a:blinkon0
@@ -380,8 +381,10 @@ augroup utils
   autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
         \| exe "normal! g'\"" | endif
 
-  " Use xmllint for xml formatting (use gg=G to format the whole document)
-  autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+  " Use xmllint for xml formatting if availabe
+  if executable('xmllint')
+    autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+  endif
 
   " Fix for automatically closing preview window after leaving insert mode
   " From http://stackoverflow.com/a/3107159/854676
@@ -391,6 +394,7 @@ augroup END
 " clear the search buffer when hitting return
 nnoremap <silent> <leader><cr> :nohlsearch<cr>
 
+" source private vimrc file if available
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
