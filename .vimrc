@@ -214,6 +214,7 @@ set listchars=trail:.,tab:>\ ,eol:$ " Chars to show when enabling 'set list'
 set lazyredraw " Enhance operations like macros. See http://goo.gl/H8ch7c
 set t_ut= " disabling Background Color Erase (BCE) for looking properly in tmux
 set laststatus=2 " always show status bar
+set statusline=%-4m%<%f\ {%{&ft}}%=%{&ff}:%{&fenc}\ \ {%l:%c}
 set incsearch
 set hlsearch
 set noerrorbells visualbell t_vb= " disable beeping and flashing on errors
