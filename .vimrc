@@ -356,11 +356,12 @@ vnoremap <Leader>p "*p
 nnoremap <Leader>P "*P
 vnoremap <Leader>P "*P
 
-" easy windows navigation
+" easy window navigation
 nnoremap <silent> <c-l> <c-w>l
 nnoremap <silent> <c-j> <c-w>j
 nnoremap <silent> <c-h> <c-w>h
 nnoremap <silent> <c-k> <c-w>k
+nnoremap <silent> <leader>\ <c-^>
 
 " cd to directory of current file
 nnoremap <silent> <leader>cd :lcd %:p:h<CR>
