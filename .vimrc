@@ -363,10 +363,10 @@ nnoremap <silent> <c-h> <c-w>h
 nnoremap <silent> <c-k> <c-w>k
 
 " cd to directory of current file
-nnoremap <silent> <leader>cd :cd %:p:h<CR>
+nnoremap <silent> <leader>cd :lcd %:p:h<CR>
 
 " easy vimrc handling
-nnoremap <leader>cc :edit $MYVIMRC<cr>
+nnoremap <leader>cc :tabedit $MYVIMRC<cr>
 nnoremap <leader>cs :source $MYVIMRC<cr>
 
 " visual shifting (does not exit Visual mode)
