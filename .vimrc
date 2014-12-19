@@ -349,6 +349,9 @@ vnoremap <Leader>p "*p
 nnoremap <Leader>P "*P
 vnoremap <Leader>P "*P
 
+" copy full file path to clipboard
+nnoremap <silent><Leader>gp :let @+ = expand("%:p")<cr>
+
 " easy window navigation
 nnoremap <silent> <c-l> <c-w>l
 nnoremap <silent> <c-j> <c-w>j
