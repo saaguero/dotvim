@@ -65,13 +65,6 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'Keithbsmiley/investigate.vim' "{{{
   let g:investigate_use_dash=1
 "}}}
-Plug 'bling/vim-airline' "{{{
-  let g:airline_theme = 'zenburn'
-  let g:airline#extensions#whitespace#enabled = 0
-  let g:airline#extensions#tagbar#enabled = 0
-  let g:airline#extensions#tabline#enabled = 0
-  let g:airline#extensions#disable_rtp_load = 1
-"}}}
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive' "{{{
   " prevent bloat buffer list
