@@ -240,6 +240,7 @@ set display+=lastline " show as much as possible of the last line instead of @
 set foldenable " enable folds by default
 set foldmethod=syntax " fold via syntax of file
 set foldlevelstart=99 " open all folds by default
+set breakindent " improves indent when wrapping lines making it more readable
 
 filetype plugin indent on " allow plugins and auto indention for filetypes
 
