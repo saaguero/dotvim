@@ -223,7 +223,7 @@ set wildignorecase
 set cursorline
 set ignorecase " ignorecase is needed for smartcase to work
 set smartcase
-set noshowmode " useful if using vim-airline as to avoid duplicating
+set noshowmode " do not show which mode you are in (visual, insert...)
 set showcmd
 set shortmess+=I " avoid splashscreen
 set mouse=a
