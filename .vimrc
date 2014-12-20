@@ -227,7 +227,6 @@ set noshowmode " do not show which mode you are in (visual, insert...)
 set showcmd
 set shortmess+=I " avoid splashscreen
 set mouse=a
-set textwidth=80
 " allow to edit a file without saving current buffer
 set hidden
 set history=1000 " increase history, default is 20
@@ -283,6 +282,8 @@ augroup filetypeAndSpaces
 
   autocmd FileType python setlocal foldmethod=indent
   autocmd FileType vim setlocal foldmethod=indent
+
+  autocmd Filetype text setlocal textwidth=80
 augroup END
 
 " Syntax folding
