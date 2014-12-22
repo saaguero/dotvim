@@ -61,7 +61,6 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'Konfekt/FastFold'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tpope/vim-commentary'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive' "{{{
   " prevent bloat buffer list
