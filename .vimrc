@@ -62,9 +62,6 @@ Plug 'Konfekt/FastFold'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tpope/vim-commentary'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'Keithbsmiley/investigate.vim' "{{{
-  let g:investigate_use_dash=1
-"}}}
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive' "{{{
   " prevent bloat buffer list
@@ -73,6 +70,7 @@ Plug 'tpope/vim-fugitive' "{{{
     autocmd BufReadPost fugitive://* set bufhidden=delete
   augroup END
 "}}}
+Plug 'gregsexton/gitv', { 'on': 'Gitv' }
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
@@ -97,7 +95,6 @@ Plug 'Yggdroot/indentLine' "{{{
   let g:indentLine_enabled = 0
 "}}}
 Plug 'vim-scripts/matchit.zip'
-Plug 'gregsexton/gitv', { 'on': 'Gitv' }
 Plug 'majutsushi/tagbar' "{{{
   nnoremap <silent> <F3> :TagbarToggle<CR>
 "}}}
@@ -107,7 +104,7 @@ Plug 'sirver/ultisnips', { 'on': [] } "{{{
   let g:UltiSnipsJumpForwardTrigger="<c-j>"
   let g:UltiSnipsJumpBackwardTrigger="<c-k>"
   let g:UltiSnipsListSnippets="<c-l>"
-  
+
   augroup load_ultisnips
     autocmd!
     autocmd InsertEnter * call plug#load('ultisnips') | autocmd! load_ultisnips
@@ -115,10 +112,6 @@ Plug 'sirver/ultisnips', { 'on': [] } "{{{
 "}}}
 Plug 'saaguero/vim-snippets'
 Plug 'marijnh/tern_for_vim', { 'for': 'javascript' }
-Plug 'junegunn/seoul256.vim' "{{{
-  let g:seoul256_background = 233
-  let g:seoul256_light_background = 256
-"}}}
 Plug 'junegunn/goyo.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
   nnoremap <silent> <F4> :NERDTreeToggle<CR>
@@ -158,25 +151,18 @@ Plug 'kien/ctrlp.vim' "{{{
   " Add custom ctag types. Check that you have proper rule in ~/.ctags
   let g:ctrlp_buftag_types = { 'ant': '--language-force=ant' }
 "}}}
+Plug 'felikz/ctrlp-py-matcher'
 Plug 'ivalkeen/vim-ctrlp-tjump' "{{{
   nnoremap <c-]> :CtrlPtjump<cr>
   vnoremap <c-]> :CtrlPtjumpVisual<cr>
   let g:ctrlp_tjump_only_silent = 1
 "}}}
-Plug 'felikz/ctrlp-py-matcher'
 Plug 'justinmk/vim-gtfo'
 Plug 'saaguero/html-autoclosetag'
 Plug 'rking/ag.vim' "{{{
   nnoremap <leader>gg :Ag!<cr>
 "}}}
 Plug 'saaguero/vim-scriptease', { 'for': 'vim' }
-" Plug 'scrooloose/syntastic' "{{{
-"   " disable executing on file save. use the command to run the checks
-"   let g:syntastic_mode_map = { "mode": "passive",
-"         \ "active_filetypes": [],
-"         \ "passive_filetypes": [] }
-"   let g:syntastic_full_redraws = 0
-" "}}}
 Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
   let g:jedi#popup_on_dot = 0
   " just rely on supertab trigger
