@@ -357,7 +357,7 @@ nnoremap <leader>cs :source $MYVIMRC<cr>
 vnoremap < <gv
 vnoremap > >gv
 " rehighlights the last pasted text
-nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
+nnoremap gb `[v`]
 
 
 augroup utils
