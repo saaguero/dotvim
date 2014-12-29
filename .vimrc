@@ -141,7 +141,7 @@ Plug 'kien/ctrlp.vim' "{{{
   " Set no file limit as we are building a big project
   let g:ctrlp_max_files = 0
   " Improve search time given a delay
-  let g:ctrlp_lazy_update = 250
+  let g:ctrlp_lazy_update = 50
   " Use pymatcher to improve performance when filtering the resuls
   let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
