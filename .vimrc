@@ -187,7 +187,6 @@ set nocompatible
 set encoding=utf-8
 set listchars=trail:.,tab:>\ ,eol:$ " Chars to show when enabling 'set list'
 set lazyredraw " Enhance operations like macros. See http://goo.gl/H8ch7c
-set t_ut= " disabling Background Color Erase (BCE) for looking properly in tmux
 set laststatus=2 " always show status bar
 set statusline=%-4m%f\ \ %=%{&ff}:%{&fenc}\ \ {%l:%c}
 set incsearch
@@ -222,6 +221,16 @@ set foldmethod=syntax " fold via syntax of file
 set foldlevelstart=99 " open all folds by default
 set ttimeoutlen=50 " time in milliseconds to wait for a key mapping
 set breakindent " improves indent when wrapping lines making it more readable
+
+set term=xterm
+let &t_Co = 256 " setting for allowing 256 color schemes
+if s:is_windows
+  " trick to support 256 colors in conemu for Windows
+  let &t_AF="\e[38;5;%dm"
+  let &t_AB="\e[48;5;%dm"
+endif
+set t_ut= " disabling Background Color Erase (BCE) for looking properly in tmux
+set t_ti= t_te= " prevent vim from clobbering the scrollback buffer
 
 filetype plugin indent on " allow plugins and auto indention for filetypes
 
@@ -288,19 +297,8 @@ if has("gui_running")
     au GUIEnter * simalt ~x
     set guifont=Consolas:h11
   endif
-  " disable all UI options
-  set guioptions=
-  " disable blinking cursor
-  set guicursor+=a:blinkon0
-else
-  " use 256
-  set term=xterm
-  let &t_Co = 256
-  if s:is_windows
-    " trick to support 256 colors in conemu for Windows
-    let &t_AF="\e[38;5;%dm"
-    let &t_AB="\e[48;5;%dm"
-  endif
+  set guioptions= " disable all UI options
+  set guicursor+=a:blinkon0 " disable blinking cursor
 endif
 
 colorscheme badwolf
