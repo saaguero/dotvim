@@ -70,7 +70,6 @@ Plug 'tpope/vim-fugitive' "{{{
   augroup END
 "}}}
 Plug 'gregsexton/gitv', { 'on': 'Gitv' }
-Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-dispatch'
@@ -224,6 +223,7 @@ set display+=lastline " show as much as possible of the last line instead of @
 set foldenable " enable folds by default
 set foldmethod=syntax " fold via syntax of file
 set foldlevelstart=99 " open all folds by default
+set ttimeoutlen=50 " time in millseconds to wait for a key mapping
 set breakindent " improves indent when wrapping lines making it more readable
 
 filetype plugin indent on " allow plugins and auto indention for filetypes
@@ -310,6 +310,12 @@ colorscheme badwolf
 "}}}
 
 " Custom utils/mappings {{{
+" rsi mappings
+inoremap <C-a> <Home>
+cnoremap <C-a> <Home>
+inoremap <C-e> <End>
+cnoremap <C-e> <End>
+
 " Filter command history the same way as <Up> <Down> do
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
