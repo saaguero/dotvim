@@ -72,7 +72,6 @@ Plug 'tpope/vim-fugitive' "{{{
 Plug 'gregsexton/gitv', { 'on': 'Gitv' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-dispatch'
 Plug 'tommcdo/vim-exchange'
 Plug 'raimondi/delimitmate' "{{{
   let delimitMate_expand_cr = 2
@@ -179,7 +178,6 @@ Plug 'ntpeters/vim-better-whitespace' "{{{
   vnoremap <F10> :StripWhitespace<cr>
   highlight ExtraWhitespace ctermbg=black guibg=black
 "}}}
-Plug 'drmikehenry/vim-fontsize'
 
 call plug#end()
 "}}}
