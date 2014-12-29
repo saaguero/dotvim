@@ -209,8 +209,7 @@ set noshowmode " do not show which mode you are in (visual, insert...)
 set showcmd
 set shortmess+=I " avoid splashscreen
 set mouse=a
-" allow to edit a file without saving current buffer
-set hidden
+set hidden " allow to edit a file without saving current buffer
 set history=1000 " increase history, default is 20
 set shellslash " used forward slashes on Windows when expanding paths
 set complete-=i " remove scanning include files for completion as it is slow
@@ -221,7 +220,7 @@ set display+=lastline " show as much as possible of the last line instead of @
 set foldenable " enable folds by default
 set foldmethod=syntax " fold via syntax of file
 set foldlevelstart=99 " open all folds by default
-set ttimeoutlen=50 " time in millseconds to wait for a key mapping
+set ttimeoutlen=50 " time in milliseconds to wait for a key mapping
 set breakindent " improves indent when wrapping lines making it more readable
 
 filetype plugin indent on " allow plugins and auto indention for filetypes
