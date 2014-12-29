@@ -188,7 +188,7 @@ set encoding=utf-8
 set listchars=trail:.,tab:>\ ,eol:$ " Chars to show when enabling 'set list'
 set lazyredraw " Enhance operations like macros. See http://goo.gl/H8ch7c
 set laststatus=2 " always show status bar
-set statusline=%-4m%f\ \ %=%{&ff}:%{&fenc}\ \ {%l:%c}
+set statusline=%-4m%f\ %y\ \ %=%{&ff}:%{&fenc}\ \ {%l:%c}
 set incsearch
 set hlsearch
 set noerrorbells visualbell t_vb= " disable beeping and flashing on errors
