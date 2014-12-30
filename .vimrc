@@ -375,6 +375,18 @@ augroup END
 " clear the search buffer when hitting return
 nnoremap <silent> <leader><cr> :nohlsearch<cr>
 
+" split lines on whitespace
+function! SplitOnSpace()
+  execute "normal f\<space>i\r\e"
+  " make it repeatable (requires vim-repeat)
+  silent! call repeat#set("\<Plug>CustomSplitOnSpace")
+endfunction
+nnoremap <silent> <Plug>CustomSplitOnSpace :call SplitOnSpace()<cr>
+nnoremap <silent> <leader>k :call SplitOnSpace()<cr>
+
+" join lines (convenient mapping for my workflow)
+nnoremap <silent> <leader>j J
+
 " source private vimrc file if available
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
