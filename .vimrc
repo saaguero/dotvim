@@ -86,11 +86,6 @@ Plug 'kristijanhusak/vim-multiple-cursors' "{{{
                                         \ 'c': 1, 'd': 1}
 "}}}
 Plug 'saaguero/vim-togglelist'
-Plug 'Yggdroot/indentLine' "{{{
-  nnoremap <silent> <F2> :IndentLinesToggle<cr>
-  let g:indentLine_char = '|'
-  let g:indentLine_enabled = 0
-"}}}
 Plug 'vim-scripts/matchit.zip'
 Plug 'majutsushi/tagbar' "{{{
   nnoremap <silent> <F3> :TagbarToggle<CR>
