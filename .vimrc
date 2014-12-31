@@ -52,10 +52,6 @@ Plug 'sjl/gundo.vim' "{{{
 "}}}
 Plug 'kana/vim-textobj-user'
 Plug 'bps/vim-textobj-python'
-Plug 'moll/vim-bbye' "{{{
-  nnoremap <silent> <Leader>w :Bdelete<CR>
-  nnoremap <silent> <Leader>W :Bdelete!<CR>
-"}}}
 Plug 'quanganhdo/grb256'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'Konfekt/FastFold'
