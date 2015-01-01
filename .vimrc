@@ -42,12 +42,15 @@ endif
 Plug 'haya14busa/incsearch.vim' "{{{
   map /  <Plug>(incsearch-forward)
   map ?  <Plug>(incsearch-backward)
-  map g/ <Plug>(incsearch-stay)
 "}}}
 Plug 'sjl/gundo.vim' "{{{
   nnoremap <leader>gu :GundoToggle<cr>
 "}}}
 Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-operator-user'
+Plug 'rgrinberg/vim-operator-gsearch' "{{{
+  map g/ <Plug>(operator-ag)
+"}}}"
 Plug 'bps/vim-textobj-python'
 Plug 'quanganhdo/grb256'
 Plug 'ekalinin/Dockerfile.vim'
