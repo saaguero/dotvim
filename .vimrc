@@ -22,10 +22,7 @@ let g:plug_url_format = 'https://github.com/%s.git'
 "}}}
 
 " Plugin settings {{{
-Plug 'ervandew/supertab' "{{{
-  let g:SuperTabDefaultCompletionType = "context"
-"}}}
-
+Plug 'ajh17/VimCompletesMe'
 if s:is_windows "{{{
 Plug 'lorry-lee/visual_studio.vim' "{{{
   let g:visual_studio_mapping = 0
@@ -165,7 +162,7 @@ Plug 'rking/ag.vim' "{{{
 Plug 'saaguero/vim-scriptease', { 'for': 'vim' }
 Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
   let g:jedi#popup_on_dot = 0
-  " just rely on supertab trigger
+  " just rely on tab trigger
   let g:jedi#completions_command = ""
   " this prevents jedi to mess with completeopt
   let g:jedi#auto_vim_configuration = 0
