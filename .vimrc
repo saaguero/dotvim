@@ -93,10 +93,22 @@ Plug 'sirver/ultisnips', { 'on': [] } "{{{
   let g:UltiSnipsJumpBackwardTrigger="<c-k>"
   let g:UltiSnipsListSnippets="<c-l>"
 
-  augroup load_ultisnips
-    autocmd!
-    autocmd InsertEnter * call plug#load('ultisnips') | autocmd! load_ultisnips
-  augroup END
+  inoremap <silent> <C-j> <C-r>=LoadUltiSnips()<cr>
+
+  " This function only runs if UltiSnips is not loaded
+  " Why? Because when UltiSnips is loaded the mapping <c-j>
+  " is overwritten by g:UltiSnipsExpandTrigger
+  " and hence this function will not run anymore
+  function! LoadUltiSnips()
+    normal ma
+    execute plug#load('ultisnips')
+    " Append 'a' as a workaround to expand the snippet correctly
+    normal `aAa
+    call UltiSnips#ExpandSnippet()
+    " Delete the 'a' used for the workaround
+    normal $x
+    return ""
+  endfunction
 "}}}
 Plug 'saaguero/vim-snippets'
 Plug 'marijnh/tern_for_vim', { 'for': 'javascript' }
