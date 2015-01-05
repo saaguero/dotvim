@@ -161,9 +161,6 @@ set laststatus=2
 set statusline=%-4m%f\ %y\ \ %=%{&ff}:%{&fenc}\ \ {%l:%c}
 set incsearch
 set hlsearch
-set noerrorbells visualbell t_vb=
-autocmd GUIEnter * set visualbell t_vb=
-syntax on
 set nonumber
 set backspace=2
 set autoread
@@ -192,6 +189,9 @@ set ttimeoutlen=50
 set switchbuf=useopen
 set breakindent
 
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
+
 set term=xterm
 let &t_Co = 256
 if s:is_windows
@@ -203,6 +203,7 @@ set t_ut= " disabling Background Color Erase (BCE) for looking properly in tmux
 set t_ti= t_te= " prevent vim from clobbering the scrollback buffer
 
 filetype plugin indent on
+syntax on
 
 " better backup, swap and undo storage {{{
 set noswapfile
