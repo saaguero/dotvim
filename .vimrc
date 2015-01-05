@@ -359,8 +359,9 @@ nnoremap <silent> <leader>j J
 
 " Use Ag as default grep if available
 if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor
-  command -nargs=+ Ag silent! grep <args>
+  set grepprg=ag\ --nogroup\ --nocolor\ --column
+  set grepformat=%f:%l:%c:%m
+  command! -nargs=+ Ag silent! grep <args>
 endif
 
 " source private vimrc file if available
