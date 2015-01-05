@@ -197,7 +197,6 @@ set shortmess+=I " avoid splashscreen
 set mouse=a
 set hidden " allow to edit a file without saving current buffer
 set history=1000 " increase history, default is 20
-set shellslash " used forward slashes on Windows when expanding paths
 set complete-=i " remove scanning include files for completion as it is slow
 set completeopt=menu " only show completion popup on two or more options
 set splitright splitbelow " puts new split/vsplit right/below
