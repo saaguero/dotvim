@@ -42,14 +42,6 @@ Plug 'Konfekt/FastFold'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive' "{{{
-  " prevent bloat buffer list
-  augroup fugitive
-    autocmd!
-    autocmd BufReadPost fugitive://* set bufhidden=delete
-  augroup END
-"}}}
-Plug 'gregsexton/gitv', { 'on': 'Gitv' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tommcdo/vim-exchange'
