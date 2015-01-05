@@ -206,6 +206,7 @@ set foldenable " enable folds by default
 set foldmethod=syntax " fold via syntax of file
 set foldlevelstart=99 " open all folds by default
 set ttimeoutlen=50 " time in milliseconds to wait for a key mapping
+set switchbuf=useopen
 set breakindent " improves indent when wrapping lines making it more readable
 
 set term=xterm
