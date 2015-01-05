@@ -114,25 +114,16 @@ Plug 'kien/ctrlp.vim' "{{{
   nnoremap <leader>T :CtrlPTag<cr>
   nnoremap <leader>a :CtrlPBuffer<cr>
 
-  " Increase window height
   let g:ctrlp_match_window = 'bottom,order:btt,min:20,max:20,results:20'
-  " Use the directory you started vim
   let g:ctrlp_working_path_mode = 0
   let g:ctrlp_custom_ignore = {
         \ 'dir':  '\v[\/](\.git|\.hg|\.svn)$',
         \ 'file': '\.pyc$\|\.pyo$',
         \ }
-
-  " On multiple files show the first one and hide the others
   let g:ctrlp_open_multiple_files = '1jr'
-  " Set no file limit as we are building a big project
   let g:ctrlp_max_files = 0
-  " Improve search time given a delay
   let g:ctrlp_lazy_update = 50
-  " Use pymatcher to improve performance when filtering the resuls
   let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-
-  " Add custom ctag types. Check that you have proper rule in ~/.ctags
   let g:ctrlp_buftag_types = { 'ant': '--language-force=ant' }
 "}}}
 Plug 'felikz/ctrlp-py-matcher'
@@ -172,45 +163,45 @@ call plug#end()
 " Vim sensible settings {{{
 set nocompatible
 set encoding=utf-8
-set listchars=trail:.,tab:>\ ,eol:$ " Chars to show when enabling 'set list'
-set lazyredraw " Enhance operations like macros. See http://goo.gl/H8ch7c
-set laststatus=2 " always show status bar
+set listchars=trail:.,tab:>\ ,eol:$
+set lazyredraw
+set laststatus=2
 set statusline=%-4m%f\ %y\ \ %=%{&ff}:%{&fenc}\ \ {%l:%c}
 set incsearch
 set hlsearch
-set noerrorbells visualbell t_vb= " disable beeping and flashing on errors
-autocmd GUIEnter * set visualbell t_vb= " for gvim
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
 syntax on
 set nonumber
-set backspace=2 " set backspace to work as expected
-set autoread " automatically reload file if it changed
-set scrolloff=3 " when scrolling, keep cursor 3 lines away from screen border
-set wildmode=list:longest,full " Complete to common part then another <tab> will fully complete first match
+set backspace=2
+set autoread
+set scrolloff=3
+set wildmode=list:longest,full
 set wildmenu
 set wildignorecase
 set cursorline
-set ignorecase " ignorecase is needed for smartcase to work
+set ignorecase
 set smartcase
-set showmode " show which mode you are in (visual, insert...)
+set showmode
 set showcmd
-set shortmess+=I " avoid splashscreen
+set shortmess+=I
 set mouse=a
-set hidden " allow to edit a file without saving current buffer
-set history=1000 " increase history, default is 20
-set complete-=i " remove scanning include files for completion as it is slow
-set completeopt=menu " only show completion popup on two or more options
-set splitright splitbelow " puts new split/vsplit right/below
+set hidden
+set history=1000
+set complete-=i
+set completeopt=menu
+set splitright splitbelow
 set winwidth=80
-set display+=lastline " show as much as possible of the last line instead of @
-set foldenable " enable folds by default
-set foldmethod=syntax " fold via syntax of file
-set foldlevelstart=99 " open all folds by default
-set ttimeoutlen=50 " time in milliseconds to wait for a key mapping
+set display+=lastline
+set foldenable
+set foldmethod=syntax
+set foldlevelstart=99
+set ttimeoutlen=50
 set switchbuf=useopen
-set breakindent " improves indent when wrapping lines making it more readable
+set breakindent
 
 set term=xterm
-let &t_Co = 256 " setting for allowing 256 color schemes
+let &t_Co = 256
 if s:is_windows
   " trick to support 256 colors in conemu for Windows
   let &t_AF="\e[38;5;%dm"
@@ -219,17 +210,15 @@ endif
 set t_ut= " disabling Background Color Erase (BCE) for looking properly in tmux
 set t_ti= t_te= " prevent vim from clobbering the scrollback buffer
 
-filetype plugin indent on " allow plugins and auto indention for filetypes
+filetype plugin indent on
 
 " better backup, swap and undo storage {{{
-" create needed directories if they don't exist
 set noswapfile
 set backup
 set undofile
 
 set backupdir=~/.vim/dirs/backup
 set undodir=~/.vim/dirs/undo
-
 if !isdirectory(&backupdir)
   call mkdir(&backupdir, "p")
 endif
@@ -346,7 +335,6 @@ vnoremap < <gv
 vnoremap > >gv
 " rehighlights the last pasted text
 nnoremap gb `[v`]
-
 
 augroup utils
   autocmd!
