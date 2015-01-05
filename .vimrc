@@ -126,9 +126,6 @@ Plug 'ivalkeen/vim-ctrlp-tjump' "{{{
 "}}}
 Plug 'justinmk/vim-gtfo'
 Plug 'saaguero/html-autoclosetag'
-Plug 'rking/ag.vim' "{{{
-  nnoremap <leader>gg :Ag!<cr>
-"}}}
 Plug 'saaguero/vim-scriptease', { 'for': 'vim' }
 Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
   let g:jedi#popup_on_dot = 0
@@ -359,6 +356,12 @@ nnoremap <silent> <leader>k :call SplitOnSpace()<cr>
 
 " join lines (convenient mapping for my workflow)
 nnoremap <silent> <leader>j J
+
+" Use Ag as default grep if available
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+  command -nargs=+ Ag silent! grep <args>
+endif
 
 " source private vimrc file if available
 if filereadable(expand("~/.vimrc.local"))
