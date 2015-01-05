@@ -23,22 +23,6 @@ let g:plug_url_format = 'https://github.com/%s.git'
 
 " Plugin settings {{{
 Plug 'ajh17/VimCompletesMe'
-if s:is_windows "{{{
-Plug 'lorry-lee/visual_studio.vim' "{{{
-  let g:visual_studio_mapping = 0
-  nmap <silent> <Leader><Leader>vg :call DTEGetFile()<cr>
-  nmap <silent> <Leader><Leader>vp :call DTEPutFile()<cr>
-  nmap <silent> <Leader><Leader>vt :call DTETaskList()<cr>
-  nmap <silent> <Leader><Leader>ve :call DTEErrorList()<cr>
-  nmap <silent> <Leader><Leader>vo :call DTEOutput()<cr>
-  nmap <silent> <Leader><Leader>vb :call DTEBuildSolution()<cr>
-  nmap <silent> <Leader><Leader>vu :call DTEBuildStartupProject()<cr>
-  nmap <silent> <Leader><Leader>vc :call DTECompileFile()<cr>
-  nmap <silent> <Leader><Leader>vs :call DTEGetSolutions()<cr>
-  nmap <silent> <Leader><Leader>vj :call DTEGetProjects()<cr>
-"}}}
-endif
-"}}}
 Plug 'haya14busa/incsearch.vim' "{{{
   map /  <Plug>(incsearch-forward)
   map ?  <Plug>(incsearch-backward)
