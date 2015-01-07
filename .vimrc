@@ -156,48 +156,27 @@ set listchars=trail:.,tab:>\ ,eol:$
 set lazyredraw
 set laststatus=2
 set statusline=%-4m%f\ %y\ \ %=%{&ff}:%{&fenc}\ \ {%l:%c}
-set incsearch
-set hlsearch
+set incsearch hlsearch
 set nonumber
 set backspace=2
 set autoread
 set scrolloff=3
-set wildmode=list:longest,full
-set wildmenu
-set wildignorecase
+set wildmenu wildignorecase wildmode=list:longest,full
 set cursorline
-set ignorecase
-set smartcase
-set showmode
-set showcmd
+set ignorecase smartcase
+set showmode showcmd
 set shortmess+=I
-set mouse=a
 set hidden
 set history=1000
-set complete-=i
-set completeopt=menu
+set complete-=i completeopt=menu
 set splitright splitbelow
 set winwidth=80
 set display+=lastline
-set foldenable
-set foldmethod=syntax
-set foldlevelstart=99
+set foldenable foldmethod=syntax foldlevelstart=99
 set ttimeoutlen=50
 set switchbuf=useopen
+set mouse=a
 set breakindent
-
-set noerrorbells visualbell t_vb=
-autocmd GUIEnter * set visualbell t_vb=
-
-set term=xterm
-let &t_Co = 256
-if s:is_windows
-  " trick to support 256 colors in conemu for Windows
-  let &t_AF="\e[38;5;%dm"
-  let &t_AB="\e[48;5;%dm"
-endif
-set t_ut= " disabling Background Color Erase (BCE) for looking properly in tmux
-set t_ti= t_te= " prevent vim from clobbering the scrollback buffer
 
 filetype plugin indent on
 syntax on
@@ -218,21 +197,42 @@ endif
 "}}}
 "}}}
 
+" GUI & Terminal setttings {{{
+if has("gui_running")
+  if has("gui_macvim")
+    set guifont=Consolas:h15
+  elseif has("gui_win32")
+    autocmd GUIEnter * simalt ~x " open maximize in Windows
+    set guifont=Consolas:h11
+  endif
+  set guioptions= " disable all UI options
+  set guicursor+=a:blinkon0 " disable blinking cursor
+  autocmd GUIEnter * set visualbell t_vb=
+else
+  set noerrorbells visualbell t_vb=
+  set term=xterm
+  set t_ut= " setting for looking properly in tmux
+  set t_ti= t_te= " prevent vim from clobbering the scrollback buffer
+  let &t_Co = 256
+  if s:is_windows " trick to support 256 colors in conemu for Windows
+    let &t_AF="\e[38;5;%dm"
+    let &t_AB="\e[48;5;%dm"
+  endif
+endif
+
+colorscheme badwolf
+"}}}
+
 " Spaces and Filetype settings {{{
 set autoindent
-set expandtab
-set smarttab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-" exceptions
-augroup filetypeAndSpaces
-  autocmd!
-  autocmd FileType html,xml,javascript set shiftwidth=2 tabstop=2 softtabstop=2
+set expandtab smarttab
+set tabstop=4 softtabstop=4 shiftwidth=4
 
-  " filetype.vim (included in vim) hasn't have a good autodetection for
-  " htmldjango. Therefore just rely on htmldjango for both django and html files
-  autocmd BufNewFile,BufRead *.html set filetype=htmldjango
+augroup CustomFiletype
+  autocmd!
+  autocmd FileType html,xml,javascript set tabstop=2 softtabstop=2 shiftwidth=2
+
+  autocmd BufNewFile,BufRead *.html set filetype=html.htmldjango
   autocmd BufNewFile,BufRead *.wxs set filetype=wxs.xml
   autocmd BufNewFile,BufRead *.wxi set filetype=wxi.xml
   autocmd BufNewFile,BufRead *.md set filetype=markdown
@@ -252,22 +252,6 @@ let ruby_fold=1
 let sh_fold_enabled=1
 let vimsyn_folding='af'
 let xml_syntax_folding=1
-"}}}
-
-" GUI setttings {{{
-if has("gui_running")
-  if has("gui_macvim")
-    set guifont=Consolas:h15
-  elseif has("gui_win32")
-    " open maximize in windows
-    au GUIEnter * simalt ~x
-    set guifont=Consolas:h11
-  endif
-  set guioptions= " disable all UI options
-  set guicursor+=a:blinkon0 " disable blinking cursor
-endif
-
-colorscheme badwolf
 "}}}
 
 " Custom utils/mappings {{{
@@ -323,10 +307,11 @@ nnoremap <leader>cs :source $MYVIMRC<cr>
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
 vnoremap > >gv
+
 " rehighlights the last pasted text
 nnoremap gb `[v`]
 
-augroup utils
+augroup CustomUtils
   autocmd!
   " Open the file placing the cursor where it was
   autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
@@ -337,8 +322,7 @@ augroup utils
     autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
   endif
 
-  " Fix for automatically closing preview window after leaving insert mode
-  " From http://stackoverflow.com/a/3107159/854676
+  " Close preview window when leaving insert mode http://stackoverflow.com/a/3107159/854676
   autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 augroup END
 
