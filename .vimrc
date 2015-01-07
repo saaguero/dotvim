@@ -159,7 +159,8 @@ set laststatus=2
 set statusline=%-4m%f\ %y\ \ %=%{&ff}:%{&fenc}\ \ {%l:%c}
 set incsearch hlsearch
 set nonumber
-set backspace=2
+set backspace=indent,eol,start
+set nostartofline
 set autoread
 set scrolloff=3
 set wildmenu wildignorecase wildmode=list:longest,full
