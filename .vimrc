@@ -101,10 +101,11 @@ Plug 'idbrii/vim-mark', { 'on': '<Plug>MarkSet' } " {{{
 "}}}
 Plug 'kien/ctrlp.vim' "{{{
   nnoremap <leader>e :CtrlP<cr>
-  nnoremap <leader>E :CtrlPMRUFiles<cr>
+  nnoremap <leader>E :CtrlPCurFile<cr>
   nnoremap <leader>t :CtrlPBufTag<cr>
   nnoremap <leader>T :CtrlPTag<cr>
   nnoremap <leader>a :CtrlPBuffer<cr>
+  nnoremap <leader>A :CtrlPMRUFiles<cr>
 
   let g:ctrlp_match_window = 'bottom,order:btt,min:20,max:20,results:20'
   let g:ctrlp_working_path_mode = 0
