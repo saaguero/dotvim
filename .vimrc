@@ -230,16 +230,13 @@ set tabstop=4 softtabstop=4 shiftwidth=4
 
 augroup CustomFiletype
   autocmd!
-  autocmd FileType html,xml,javascript set tabstop=2 softtabstop=2 shiftwidth=2
-
   autocmd BufNewFile,BufRead *.html set filetype=html.htmldjango
   autocmd BufNewFile,BufRead *.wxs set filetype=wxs.xml
   autocmd BufNewFile,BufRead *.wxi set filetype=wxi.xml
   autocmd BufNewFile,BufRead *.md set filetype=markdown
 
-  autocmd FileType python setlocal foldmethod=indent
-  autocmd FileType vim setlocal foldmethod=indent
-
+  autocmd FileType html,xml,javascript set tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType python,vim setlocal foldmethod=indent
   autocmd Filetype text setlocal textwidth=80
 augroup END
 
