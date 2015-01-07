@@ -361,7 +361,7 @@ nnoremap <silent> <leader>j J
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor\ --column
   set grepformat=%f:%l:%c:%m
-  command! -nargs=+ Ag silent! grep <args>
+  command! -nargs=+ Ag silent! grep <args> | redraw! | copen
 endif
 
 " source private vimrc file if available
