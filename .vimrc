@@ -279,12 +279,10 @@ nnoremap Q <nop>
 cabbrev w!! w !sudo tee "%"
 
 " easy system clipboard copy/paste
-vnoremap <Leader>y "*y
-nnoremap <Leader>y "*y
-nnoremap <Leader>p "*p
-vnoremap <Leader>p "*p
-nnoremap <Leader>P "*P
-vnoremap <Leader>P "*P
+noremap <Leader>y "*y
+noremap <Leader>Y "*Y
+noremap <Leader>p "*p
+noremap <Leader>P "*P
 
 " copy full file path to clipboard
 nnoremap <silent><Leader>gp :let @+ = expand("%:p")<cr>
