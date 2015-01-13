@@ -260,8 +260,8 @@ nnoremap <leader>S ^vg_y:@"<cr>
 command! -bang Q q<bang>
 command! -bang W w<bang>
 
-" suppress map for ex mode as it's easy to open it by mistake
-nnoremap Q <nop>
+" replace ex mode map and use it for repeating last executed macro
+nnoremap Q @@
 
 " save as sudo
 cabbrev w!! w !sudo tee "%"
