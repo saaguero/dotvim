@@ -37,14 +37,12 @@ Plug 'rgrinberg/vim-operator-gsearch' "{{{
 "}}}"
 Plug 'bps/vim-textobj-python'
 Plug 'quanganhdo/grb256'
-Plug 'ekalinin/Dockerfile.vim'
 Plug 'Konfekt/FastFold'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
-Plug 'tommcdo/vim-exchange'
 Plug 'raimondi/delimitmate' "{{{
   let delimitMate_expand_cr = 2
 "}}}
@@ -82,8 +80,6 @@ Plug 'sirver/ultisnips', { 'on': [] } "{{{
   endfunction
 "}}}
 Plug 'saaguero/vim-snippets'
-Plug 'marijnh/tern_for_vim', { 'for': 'javascript' }
-Plug 'junegunn/goyo.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
   nnoremap <silent> <F4> :NERDTreeToggle<CR>
   nnoremap <silent> <F5> :NERDTreeFind<CR>
@@ -115,11 +111,6 @@ Plug 'kien/ctrlp.vim' "{{{
   let g:ctrlp_buftag_types = { 'ant': '--language-force=ant' }
 "}}}
 Plug 'felikz/ctrlp-py-matcher'
-Plug 'ivalkeen/vim-ctrlp-tjump' "{{{
-  nnoremap <c-]> :CtrlPtjump<cr>
-  vnoremap <c-]> :CtrlPtjumpVisual<cr>
-  let g:ctrlp_tjump_only_silent = 1
-"}}}
 Plug 'justinmk/vim-gtfo'
 Plug 'saaguero/html-autoclosetag'
 Plug 'saaguero/vim-scriptease', { 'for': 'vim' }
