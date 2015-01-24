@@ -229,16 +229,6 @@ augroup CustomFiletype
   autocmd FileType python,vim setlocal foldmethod=indent
   autocmd Filetype text setlocal textwidth=80
 augroup END
-
-" Syntax folding
-let javaScript_fold=1
-let perl_fold=1
-let php_folding=1
-let r_syntax_folding=1
-let ruby_fold=1
-let sh_fold_enabled=1
-let vimsyn_folding='af'
-let xml_syntax_folding=1
 "}}}
 
 " Custom utils/mappings {{{
