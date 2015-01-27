@@ -85,7 +85,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
   nnoremap <silent> <F5> :NERDTreeFind<CR>
   let NERDTreeShowHidden=1
 "}}}
-Plug 'saaguero/vim-github-colorscheme'
+Plug 'endel/vim-github-colorscheme'
 Plug 'sjl/badwolf'
 Plug 'idbrii/vim-mark', { 'on': '<Plug>MarkSet' } " {{{
   nmap <Leader>m <Plug>MarkSet
