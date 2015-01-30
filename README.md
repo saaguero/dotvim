@@ -1,40 +1,12 @@
-Prerequisites
-=============
-
-- Git, check that is in your `$PATH` (or `%PATH%` in Windows)
-
-### Vim Bindings (if you have plugins that require them)
-- Python, check that is in your `$PATH`
-  - For Windows use [python x64](https://www.python.org/download)
-- Lua, check that is in your `$PATH`
-  - For Windows use [lua x64](http://joedf.users.sourceforge.net/luabuilds/) and copy the DLL to your VIM binaries folder
-- Ruby, check that is in your `$PATH`
-  - For Windows use [ruby x64](http://rubyinstaller.org/downloads/)
-
-### Optional
-- [Ag](https://github.com/ggreer/the_silver_searcher)
-  - For Windows you can easily install it using [Chocolatey](http://chocolatey.org/)
-
-Vim 7.4+ compiled with python/ruby/lua
-======================================
-
-### Mac
-- `brew install macvim --with-cscope --with-lua --HEAD`
-    - Use `macvim -v` for terminal vim
-
-### Ubuntu
-- Compile from scratch following this [guide](http://zaiste.net/2013/05/compiling_vim_with_ruby_and_python_support_on_ubuntu/)
-
-### Windows
-- Use the latest compiled version from [here](http://solar-blogg.blogspot.ca/p/vim-build.html)
-- You can use terminal vim in Windows if you want, I recommend using it with [cmder](http://bliker.github.io/cmder/)
-
 Installation
 ============
+Copy or symlink .vimrc to your `$HOME` (or `%HOMEPATH%` in Windows)
 
-- Copy or symlink .vimrc to your `$HOME` (or `%HOMEPATH%` in Windows)
-- Run vim, if it doesn't detect `vim-plug` (package manager), it will install it along with
-  the plugins in `$HOME/.vim` (or `%HOMEPATH%\.vim` in Windows)
+Run vim. The first time it will install the package manager `vim-plug` along with all the plugins in `$HOME/.vim/plugged` (or `%HOMEPATH%\.vim\plugged` in Windows.)
+
+Wiki
+====
+For things about How to get Vim Binaries, How to Compile Vim, Different Vim Bindings, Vim Cheatsheet and others, visit https://github.com/saaguero/dotvim/wiki.
 
 Credits
 =======
