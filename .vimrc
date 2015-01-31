@@ -31,12 +31,7 @@ Plug 'sjl/gundo.vim' "{{{
   nnoremap <leader>gu :GundoToggle<cr>
 "}}}
 Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-operator-user'
-Plug 'rgrinberg/vim-operator-gsearch' "{{{
-  map g/ <Plug>(operator-ag)
-"}}}"
 Plug 'bps/vim-textobj-python'
-Plug 'quanganhdo/grb256'
 Plug 'Konfekt/FastFold'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tpope/vim-commentary'
@@ -112,8 +107,6 @@ Plug 'kien/ctrlp.vim' "{{{
 "}}}
 Plug 'felikz/ctrlp-py-matcher'
 Plug 'justinmk/vim-gtfo'
-Plug 'saaguero/html-autoclosetag'
-Plug 'saaguero/vim-scriptease', { 'for': 'vim' }
 Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
   let g:jedi#popup_on_dot = 0
   " just rely on tab trigger
