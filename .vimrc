@@ -264,10 +264,6 @@ nnoremap <silent> <leader>cd :lcd %:p:h<CR>
 nnoremap <leader>cc :tabedit $MYVIMRC<cr>
 nnoremap <leader>cs :source $MYVIMRC<cr>
 
-" visual shifting (does not exit Visual mode)
-vnoremap < <gv
-vnoremap > >gv
-
 " rehighlights the last pasted text
 nnoremap gb `[v`]
 
