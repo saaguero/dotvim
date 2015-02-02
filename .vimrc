@@ -59,18 +59,12 @@ Plug 'sirver/ultisnips', { 'on': [] } "{{{
 
   inoremap <silent> <C-j> <C-r>=LoadUltiSnips()<cr>
 
-  " This function only runs if UltiSnips is not loaded
-  " Why? Because when UltiSnips is loaded the mapping <c-j>
-  " is overwritten by g:UltiSnipsExpandTrigger
-  " and hence this function will not run anymore
+  " This function only runs when UltiSnips is not loaded
   function! LoadUltiSnips()
-    normal ma
+    let l:curpos = getcurpos()
     execute plug#load('ultisnips')
-    " Append 'a' as a workaround to expand the snippet correctly
-    normal `aAa
+    call cursor(l:curpos[1], l:curpos[2])
     call UltiSnips#ExpandSnippet()
-    " Delete the 'a' used for the workaround
-    normal $x
     return ""
   endfunction
 "}}}
