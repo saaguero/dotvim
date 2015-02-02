@@ -120,13 +120,6 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
   let g:jedi#documentation_command = '<leader>jk'
   let g:jedi#rename_command = "<leader>jr"
 "}}}
-Plug 'ntpeters/vim-better-whitespace' "{{{
-  noremap <F10> :StripWhitespace<cr>
-  augroup ColorExtraWhitespace
-    autocmd!
-    autocmd ColorScheme * highlight ExtraWhitespace ctermbg=black guibg=black
-  augroup END
-"}}}
 
 call plug#end()
 "}}}
