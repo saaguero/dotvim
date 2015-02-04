@@ -32,6 +32,7 @@ Plug 'sjl/gundo.vim' "{{{
 "}}}
 Plug 'kana/vim-textobj-user'
 Plug 'bps/vim-textobj-python'
+Plug 'saaguero/vim-textobj-pastedtext'
 Plug 'Konfekt/FastFold'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tpope/vim-commentary'
@@ -263,9 +264,6 @@ nnoremap <silent> <leader>cd :lcd %:p:h<CR>
 " easy vimrc handling
 nnoremap <leader>cc :tabedit $MYVIMRC<cr>
 nnoremap <leader>cs :source $MYVIMRC<cr>
-
-" rehighlights the last pasted text
-nnoremap gb `[v`]
 
 augroup CustomUtils
   autocmd!
