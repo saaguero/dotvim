@@ -27,9 +27,6 @@ Plug 'haya14busa/incsearch.vim' "{{{
   map /  <Plug>(incsearch-forward)
   map ?  <Plug>(incsearch-backward)
 "}}}
-Plug 'sjl/gundo.vim' "{{{
-  nnoremap <leader>gu :GundoToggle<cr>
-"}}}
 Plug 'kana/vim-textobj-user'
 Plug 'bps/vim-textobj-python'
 Plug 'saaguero/vim-textobj-pastedtext'
@@ -46,7 +43,6 @@ Plug 'kristijanhusak/vim-multiple-cursors' "{{{
   let g:multi_cursor_normal_maps  = {'f': 1, 't': 1, 'F': 1, 'T':1,
                                         \ 'c': 1, 'd': 1}
 "}}}
-Plug 'saaguero/vim-togglelist'
 Plug 'vim-scripts/matchit.zip'
 Plug 'majutsushi/tagbar' "{{{
   nnoremap <silent> <F3> :TagbarToggle<CR>
@@ -101,7 +97,6 @@ Plug 'kien/ctrlp.vim' "{{{
   let g:ctrlp_buftag_types = { 'ant': '--language-force=ant' }
 "}}}
 Plug 'felikz/ctrlp-py-matcher'
-Plug 'justinmk/vim-gtfo'
 Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
   let g:jedi#popup_on_dot = 0
   " just rely on tab trigger
@@ -257,6 +252,7 @@ nnoremap <silent> <c-j> <c-w>j
 nnoremap <silent> <c-h> <c-w>h
 nnoremap <silent> <c-k> <c-w>k
 nnoremap <silent> <leader>\ <c-^>
+nnoremap <silent> <leader>q :botright copen<cr>
 
 " cd to directory of current file
 nnoremap <silent> <leader>cd :lcd %:p:h<CR>
