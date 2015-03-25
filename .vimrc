@@ -136,7 +136,6 @@ set hidden
 set history=1000
 set complete-=i completeopt=menu
 set splitright splitbelow
-set winwidth=80
 set display+=lastline
 set foldenable foldmethod=syntax foldlevelstart=99
 set ttimeoutlen=50
