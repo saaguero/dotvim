@@ -105,13 +105,14 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
   let g:jedi#completions_command = ""
   " this prevents jedi to mess with completeopt
   let g:jedi#auto_vim_configuration = 0
-  let g:jedi#popup_select_first = 0
   let g:jedi#goto_assignments_command = "<leader>jg"
   let g:jedi#goto_definitions_command = "<leader>jd"
   let g:jedi#usages_command = "<leader>jn"
   let g:jedi#documentation_command = '<leader>jk'
   let g:jedi#rename_command = "<leader>jr"
+  let g:jedi#use_tabs_not_buffers = 0
 "}}}
+Plug 'jmcantrell/vim-virtualenv'
 
 call plug#end()
 "}}}
@@ -122,7 +123,7 @@ set encoding=utf-8
 set listchars=trail:.,tab:>\ ,eol:$
 set lazyredraw
 set laststatus=2
-set statusline=%-4m%f\ %y\ \ %=%{&ff}\ \|\ %{&fenc}\ \ [%l:%c]
+set statusline=%-4m%f\ %y\ \ %=%{&ff}\ \|\ %{&fenc}\ \|\ %{virtualenv#statusline()}\ \ [%l:%c]
 set incsearch hlsearch
 set nonumber
 set backspace=indent,eol,start
