@@ -226,10 +226,6 @@ cnoremap <C-e> <End>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
-" Source selection or line (from sjl/dotfiles)
-vnoremap <leader>S y:@"<cr>
-nnoremap <leader>S ^vg_y:@"<cr>
-
 " avoid common typos
 command! -bang Q q<bang>
 command! -bang W w<bang>
@@ -259,10 +255,6 @@ nnoremap <silent> <leader>q :botright copen<cr>
 
 " cd to directory of current file
 nnoremap <silent> <leader>cd :lcd %:p:h<CR>
-
-" easy vimrc handling
-nnoremap <leader>cc :tabedit $MYVIMRC<cr>
-nnoremap <leader>cs :source $MYVIMRC<cr>
 
 augroup CustomUtils
   autocmd!
