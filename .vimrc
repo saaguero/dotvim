@@ -100,17 +100,18 @@ Plug 'kien/ctrlp.vim' "{{{
 "}}}
 Plug 'felikz/ctrlp-py-matcher'
 Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
-  let g:jedi#popup_on_dot = 0
-  " just rely on tab trigger
+  " rely on tab trigger
   let g:jedi#completions_command = ""
-  " this prevents jedi to mess with completeopt
+  let g:jedi#popup_on_dot = 0
+  " prevents jedi to mess with completeopt
   let g:jedi#auto_vim_configuration = 0
-  let g:jedi#goto_assignments_command = "<leader>jg"
-  let g:jedi#goto_definitions_command = "<leader>jd"
-  let g:jedi#usages_command = "<leader>jn"
-  let g:jedi#documentation_command = '<leader>jk'
-  let g:jedi#rename_command = "<leader>jr"
   let g:jedi#use_tabs_not_buffers = 0
+
+  let g:jedi#goto_definitions_command = "<C-]>"
+  let g:jedi#goto_assignments_command = "<C-[>"
+  let g:jedi#usages_command = "<leader>u"
+  let g:jedi#documentation_command = '<leader>d'
+  let g:jedi#rename_command = "<leader>r"
 "}}}
 Plug 'jmcantrell/vim-virtualenv'
 
