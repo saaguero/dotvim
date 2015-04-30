@@ -208,6 +208,7 @@ augroup CustomFiletype
   autocmd BufNewFile,BufRead *.wxs set filetype=wxs.xml
   autocmd BufNewFile,BufRead *.wxi set filetype=wxi.xml
   autocmd BufNewFile,BufRead *.md set filetype=markdown
+  autocmd BufNewFile,BufRead *.gradle set filetype=groovy
 
   autocmd FileType html,xml,javascript set tabstop=2 softtabstop=2 shiftwidth=2
   autocmd FileType python,vim setlocal foldmethod=indent
