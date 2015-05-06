@@ -37,6 +37,13 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-fireplace' "{{{
+  augroup VimFireplace
+    autocmd FileType clojure nmap <buffer> <C-]> <Plug>FireplaceDjump
+  augroup END
+"}}}
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'guns/vim-sexp'
 Plug 'raimondi/delimitmate' "{{{
   let delimitMate_expand_cr = 2
 "}}}
