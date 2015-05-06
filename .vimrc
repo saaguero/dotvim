@@ -254,6 +254,10 @@ nnoremap <silent> <c-k> <c-w>k
 nnoremap <silent> <leader>\ <c-^>
 nnoremap <silent> <leader>q :botright copen<cr>
 
+" enhance scrolling
+noremap <c-u> 5k
+noremap <c-d> 5j
+
 " cd to directory of current file
 nnoremap <silent> <leader>cd :lcd %:p:h<CR>
 
@@ -282,10 +286,7 @@ function! SplitOnSpace()
   silent! call repeat#set("\<Plug>CustomSplitOnSpace")
 endfunction
 nnoremap <silent> <Plug>CustomSplitOnSpace :call SplitOnSpace()<cr>
-nnoremap <silent> <leader>k :call SplitOnSpace()<cr>
-
-" join lines (convenient mapping for my workflow)
-nnoremap <silent> <leader>j J
+nnoremap <silent> <leader>s :call SplitOnSpace()<cr>
 
 " Use Ag as default grep if available
 if executable('ag')
