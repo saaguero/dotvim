@@ -261,10 +261,6 @@ nnoremap <silent> <c-k> <c-w>k
 nnoremap <silent> <leader>\ <c-^>
 nnoremap <silent> <leader>q :botright copen<cr>
 
-" enhance scrolling
-noremap <c-u> 5k
-noremap <c-d> 5j
-
 " cd to directory of current file
 nnoremap <silent> <leader>cd :lcd %:p:h<CR>
 
