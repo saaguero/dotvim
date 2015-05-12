@@ -190,9 +190,13 @@ else
   set t_ut= " setting for looking properly in tmux
   set t_ti= t_te= " prevent vim from clobbering the scrollback buffer
   let &t_Co = 256
-  if s:is_windows " trick to support 256 colors in conemu for Windows
+  if s:is_windows " trick to support 256 colors and scroll in conemu
     let &t_AF="\e[38;5;%dm"
     let &t_AB="\e[48;5;%dm"
+    inoremap <esc>[62~ <c-x><c-e>
+    inoremap <esc>[63~ <c-x><c-y>
+    nnoremap <esc>[62~ <c-e>
+    nnoremap <esc>[63~ <c-y>
   endif
 endif
 
