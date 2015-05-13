@@ -43,9 +43,11 @@ Plug 'tpope/vim-fireplace' "{{{
   augroup END
 "}}}
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
-Plug 'guns/vim-sexp'
+Plug 'guns/vim-sexp' "{{{
+  let g:sexp_enable_insert_mode_mappings = 0
+"}}}
 Plug 'raimondi/delimitmate' "{{{
-  let delimitMate_expand_cr = 2
+  let delimitMate_expand_cr = 1
 "}}}
 Plug 'terryma/vim-multiple-cursors' "{{{
   let g:multi_cursor_normal_maps  = {'f': 1, 't': 1, 'F': 1, 'T':1,
