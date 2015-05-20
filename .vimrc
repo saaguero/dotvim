@@ -115,11 +115,12 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
   " prevents jedi to mess with completeopt
   let g:jedi#auto_vim_configuration = 0
   let g:jedi#use_tabs_not_buffers = 0
+  let g:jedi#show_call_signatures = 0
 
   let g:jedi#goto_definitions_command = "<C-]>"
   let g:jedi#goto_assignments_command = "<C-[>"
   let g:jedi#usages_command = "<leader>u"
-  let g:jedi#documentation_command = '<leader>d'
+  let g:jedi#documentation_command = "K"
   let g:jedi#rename_command = "<leader>r"
 "}}}
 Plug 'jmcantrell/vim-virtualenv'
