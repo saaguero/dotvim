@@ -22,6 +22,7 @@ let g:plug_url_format = 'https://github.com/%s.git'
 "}}}
 
 " Plugin settings {{{
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'saaguero/vim-utils'
 Plug 'ajh17/VimCompletesMe'
 Plug 'haya14busa/incsearch.vim' "{{{
@@ -82,7 +83,6 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
   nnoremap <silent> <F5> :NERDTreeFind<CR>
   let NERDTreeShowHidden=1
 "}}}
-Plug 'endel/vim-github-colorscheme'
 Plug 'sjl/badwolf'
 Plug 'idbrii/vim-mark', { 'on': '<Plug>MarkSet' } " {{{
   nmap <Leader>m <Plug>MarkSet
