@@ -56,9 +56,6 @@ Plug 'terryma/vim-multiple-cursors' "{{{
   let g:multi_cursor_exit_from_insert_mode = 0
 "}}}
 Plug 'vim-scripts/matchit.zip'
-Plug 'majutsushi/tagbar' "{{{
-  nnoremap <silent> <F3> :TagbarToggle<CR>
-"}}}
 Plug 'sirver/ultisnips', { 'on': [] } "{{{
   let g:UltiSnipsSnippetsDir = '~/.vim/plugged/vim-snippets/UltiSnips'
   let g:UltiSnipsExpandTrigger="<c-j>"
@@ -81,7 +78,6 @@ Plug 'saaguero/vim-snippets'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
   nnoremap <silent> <F4> :NERDTreeToggle<CR>
   nnoremap <silent> <F5> :NERDTreeFind<CR>
-  let NERDTreeShowHidden=1
 "}}}
 Plug 'sjl/badwolf'
 Plug 'idbrii/vim-mark', { 'on': '<Plug>MarkSet' } " {{{
@@ -118,7 +114,7 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
   let g:jedi#show_call_signatures = 0
 
   let g:jedi#goto_definitions_command = "<C-]>"
-  let g:jedi#goto_assignments_command = "<C-[>"
+  let g:jedi#goto_assignments_command = "<leader>]"
   let g:jedi#usages_command = "<leader>u"
   let g:jedi#documentation_command = "K"
   let g:jedi#rename_command = "<leader>r"
