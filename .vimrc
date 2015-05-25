@@ -222,6 +222,7 @@ augroup CustomFiletype
 
   autocmd FileType html,xml,javascript set tabstop=2 softtabstop=2 shiftwidth=2
   autocmd FileType python,vim setlocal foldmethod=indent
+  autocmd FileType vim setlocal keywordprg=:help
   autocmd Filetype text setlocal textwidth=80
 augroup END
 "}}}
