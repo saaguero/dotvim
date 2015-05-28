@@ -24,7 +24,7 @@ let g:plug_url_format = 'https://github.com/%s.git'
 " Plugin settings {{{
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'saaguero/vim-utils'
-Plug 'ajh17/VimCompletesMe'
+Plug 'saaguero/VimCompletesMe'
 Plug 'haya14busa/incsearch.vim' "{{{
   map /  <Plug>(incsearch-forward)
   map ?  <Plug>(incsearch-backward)
