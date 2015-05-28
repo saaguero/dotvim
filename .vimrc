@@ -242,8 +242,8 @@ cnoremap <C-n> <Down>
 command! -bang Q q<bang>
 command! -bang W w<bang>
 
-" replace ex mode map and use it for repeating last executed macro
-nnoremap Q @@
+" replace ex mode map and use it for repeating 'q' macro
+nnoremap Q @q
 
 " save as sudo
 cabbrev w!! w !sudo tee "%"
@@ -285,15 +285,6 @@ augroup END
 
 " clear the search buffer when hitting return
 nnoremap <silent> <leader><cr> :nohlsearch<cr>
-
-" split lines on whitespace
-function! SplitOnSpace()
-  execute "normal f\<space>i\r\e"
-  " make it repeatable (requires vim-repeat)
-  silent! call repeat#set("\<Plug>CustomSplitOnSpace")
-endfunction
-nnoremap <silent> <Plug>CustomSplitOnSpace :call SplitOnSpace()<cr>
-nnoremap <silent> <leader>s :call SplitOnSpace()<cr>
 
 " Use Ag as default grep if available
 if executable('ag')
