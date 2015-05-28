@@ -38,13 +38,13 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-fireplace' "{{{
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' } "{{{
   augroup VimFireplace
     autocmd FileType clojure nmap <buffer> <C-]> <Plug>FireplaceDjump
   augroup END
 "}}}
-Plug 'tpope/vim-sexp-mappings-for-regular-people'
-Plug 'guns/vim-sexp' "{{{
+Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
+Plug 'guns/vim-sexp', { 'for': 'clojure' } "{{{
   let g:sexp_enable_insert_mode_mappings = 0
 "}}}
 Plug 'raimondi/delimitmate' "{{{
