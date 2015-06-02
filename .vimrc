@@ -22,9 +22,9 @@ let g:plug_url_format = 'https://github.com/%s.git'
 "}}}
 
 " Plugin settings {{{
-Plug 'NLKNguyen/papercolor-theme'
+Plug 'nlknguyen/papercolor-theme'
 Plug 'saaguero/vim-utils'
-Plug 'saaguero/VimCompletesMe'
+Plug 'saaguero/vimcompletesme'
 Plug 'haya14busa/incsearch.vim' "{{{
   map /  <Plug>(incsearch-forward)
   map ?  <Plug>(incsearch-backward)
@@ -32,7 +32,7 @@ Plug 'haya14busa/incsearch.vim' "{{{
 Plug 'kana/vim-textobj-user'
 Plug 'bps/vim-textobj-python'
 Plug 'saaguero/vim-textobj-pastedtext'
-Plug 'Konfekt/FastFold'
+Plug 'konfekt/fastfold'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
