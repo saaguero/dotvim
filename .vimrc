@@ -182,6 +182,7 @@ if has("gui_running")
   endif
   set guioptions= " disable all UI options
   set guicursor+=a:blinkon0 " disable blinking cursor
+  set ballooneval
   autocmd GUIEnter * set visualbell t_vb=
 else
   set noerrorbells visualbell t_vb=
