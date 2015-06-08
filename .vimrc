@@ -3,6 +3,7 @@
 " Variables {{{
 let mapleader = "\<Space>"
 let s:is_windows = has('win32') || has('win64')
+let s:is_nvim = has('nvim')
 "}}}
 
 " Setting up vim-plug as the package manager {{{
@@ -184,7 +185,9 @@ if has("gui_running")
   autocmd GUIEnter * set visualbell t_vb=
 else
   set noerrorbells visualbell t_vb=
-  set term=xterm
+  if !s:is_nvim
+    set term=xterm
+  endif
   set t_ut= " setting for looking properly in tmux
   set t_ti= t_te= " prevent vim from clobbering the scrollback buffer
   let &t_Co = 256
@@ -263,6 +266,11 @@ nnoremap <silent> <c-h> <c-w>h
 nnoremap <silent> <c-k> <c-w>k
 nnoremap <silent> <leader>\ <c-^>
 nnoremap <silent> <leader>q :botright copen<cr>
+
+" easy terminal navigation (for nvim)
+if s:is_nvim
+  tnoremap <esc><esc> <C-\><C-n>
+endif
 
 " cd to directory of current file
 nnoremap <silent> <leader>cd :lcd %:p:h<CR>
