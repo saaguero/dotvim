@@ -23,6 +23,12 @@ let g:plug_url_format = 'https://github.com/%s.git'
 "}}}
 
 " Plugin settings {{{
+if !s:is_windows
+  Plug 'christoomey/vim-tmux-navigator'
+endif
+Plug 'junegunn/fzf', {'dir': '/usr/local/Cellar/fzf/0.9.1'}
+Plug 'kassio/neoterm'
+Plug 'ivanov/vim-ipython'
 Plug 'nlknguyen/papercolor-theme'
 Plug 'saaguero/vim-utils'
 Plug 'saaguero/vimcompletesme'
