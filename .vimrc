@@ -26,10 +26,6 @@ let g:plug_url_format = 'https://github.com/%s.git'
 if !s:is_windows
   Plug 'christoomey/vim-tmux-navigator'
 endif
-Plug 'junegunn/fzf', {'dir': '/usr/local/Cellar/fzf/0.9.1'}
-Plug 'kassio/neoterm'
-Plug 'ivanov/vim-ipython'
-Plug 'nlknguyen/papercolor-theme'
 Plug 'saaguero/vim-utils'
 Plug 'saaguero/vimcompletesme'
 Plug 'haya14busa/incsearch.vim' "{{{
@@ -41,6 +37,7 @@ Plug 'bps/vim-textobj-python'
 Plug 'saaguero/vim-textobj-pastedtext'
 Plug 'konfekt/fastfold'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -87,6 +84,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
   nnoremap <silent> <F5> :NERDTreeFind<CR>
 "}}}
 Plug 'sjl/badwolf'
+Plug 'endel/vim-github-colorscheme'
 Plug 'idbrii/vim-mark', { 'on': '<Plug>MarkSet' } " {{{
   nmap <Leader>m <Plug>MarkSet
 "}}}
