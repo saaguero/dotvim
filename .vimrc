@@ -85,9 +85,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
 "}}}
 Plug 'sjl/badwolf'
 Plug 'endel/vim-github-colorscheme'
-Plug 'idbrii/vim-mark', { 'on': '<Plug>MarkSet' } " {{{
-  nmap <Leader>m <Plug>MarkSet
-"}}}
+Plug 'vasconcelloslf/vim-interestingwords'
 Plug 'kien/ctrlp.vim' "{{{
   nnoremap <leader>e :CtrlP<cr>
   nnoremap <leader>E :CtrlPMRUFiles<cr>
