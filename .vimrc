@@ -89,6 +89,7 @@ Plug 'kien/ctrlp.vim' "{{{
   nnoremap <leader>A :CtrlPCurFile<cr>
   nnoremap <leader>t :CtrlPBufTag<cr>
   nnoremap <leader>T :CtrlPTag<cr>
+  nnoremap <leader>r :CtrlPRTS<cr>
 
   let g:ctrlp_match_window = 'bottom,order:btt,min:20,max:20,results:20'
   let g:ctrlp_working_path_mode = 0
