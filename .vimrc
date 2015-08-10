@@ -201,11 +201,6 @@ else
   endif
 endif
 
-augroup CustomColors
-  autocmd!
-  autocmd ColorScheme * highlight CursorLine cterm=bold ctermbg=NONE gui=bold guibg=NONE
-augroup END
-
 colorscheme badwolf
 "}}}
 
