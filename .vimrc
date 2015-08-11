@@ -51,8 +51,6 @@ Plug 'raimondi/delimitmate' "{{{
   let delimitMate_expand_cr = 1
 "}}}
 Plug 'terryma/vim-multiple-cursors' "{{{
-  let g:multi_cursor_normal_maps  = {'f': 1, 't': 1, 'F': 1, 'T':1,
-                                        \ 'c': 1, 'd': 1, 'y':1}
   let g:multi_cursor_exit_from_insert_mode = 0
 "}}}
 Plug 'vim-scripts/matchit.zip'
