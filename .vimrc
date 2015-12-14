@@ -26,6 +26,21 @@ let g:plug_url_format = 'https://github.com/%s.git'
 if !s:is_windows
   Plug 'christoomey/vim-tmux-navigator'
 endif
+Plug 'mhinz/vim-grepper' "{{{
+  let g:grepper = {
+      \ 'tools':     ['ag', 'findstr'],
+      \ 'dispatch':  1,
+      \ 'open':      1,
+      \ 'switch':    0,
+      \ 'jump':      0,
+      \ 'ag': {
+      \   'grepprg': 'ag --nogroup --nocolor --column',
+      \   'grepformat': '%f:%l:%c:%m',
+      \ }}
+
+  nmap gs  <plug>(GrepperOperator)
+  xmap gs  <plug>(GrepperOperator)
+"}}}
 Plug 'saaguero/vim-utils'
 Plug 'saaguero/vimcompletesme'
 Plug 'haya14busa/incsearch.vim' "{{{
