@@ -264,6 +264,9 @@ noremap <Leader>Y "+Y
 noremap <Leader>p "+p
 noremap <Leader>P "+P
 
+" visual paste without losing the copied content
+xnoremap p "0p
+
 " copy full file path to clipboard
 nnoremap <silent><Leader>gp :let @+ = expand("%:p")<cr>
 
