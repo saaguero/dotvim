@@ -308,13 +308,6 @@ augroup END
 " clear the search buffer when hitting return
 nnoremap <silent> <leader><cr> :nohlsearch<cr>
 
-" Use Ag as default grep if available
-if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor\ --column
-  set grepformat=%f:%l:%c:%m
-  command! -nargs=+ -bang Ag silent! grep! <args> | redraw! | botright copen
-endif
-
 " cscope
 nnoremap d<c-]> :cs find d <c-r>=expand("<cword>")<cr><cr>
 nnoremap c<c-]> :cs find c <c-r>=expand("<cword>")<cr><cr>
