@@ -99,7 +99,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
 Plug 'sjl/badwolf'
 Plug 'endel/vim-github-colorscheme'
 Plug 'vasconcelloslf/vim-interestingwords'
-Plug 'kien/ctrlp.vim' "{{{
+Plug 'ctrlpvim/ctrlp.vim' "{{{
   nnoremap <leader>e :CtrlP<cr>
   nnoremap <leader>E :CtrlPMRUFiles<cr>
   nnoremap <leader>a :CtrlPBuffer<cr>
