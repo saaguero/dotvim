@@ -28,14 +28,18 @@ if !s:is_windows
 endif
 Plug 'mhinz/vim-grepper' "{{{
   let g:grepper = {
-      \ 'tools':     ['ag', 'findstr'],
+      \ 'tools':     ['ag', 'csearch', 'findstr'],
       \ 'dispatch':  1,
       \ 'open':      1,
       \ 'switch':    0,
       \ 'jump':      0,
       \ 'ag': {
       \   'grepprg': 'ag --nogroup --nocolor --column',
-      \   'grepformat': '%f:%l:%c:%m',
+      \   'grepformat': '%f:%l:%c:%m'
+      \ },
+      \ 'csearch': {
+      \   'grepprg': 'csearch -n',
+      \   'grepformat': '%f:%l:%m'
       \ }}
 
   nmap gs  <plug>(GrepperOperator)
