@@ -315,6 +315,12 @@ if executable('ag')
   command! -nargs=+ -bang Ag silent! grep! <args> | redraw! | botright copen
 endif
 
+" cscope
+nnoremap d<c-]> :cs find d <c-r>=expand("<cword>")<cr><cr>
+nnoremap c<c-]> :cs find c <c-r>=expand("<cword>")<cr><cr>
+nnoremap t<c-]> :cs find t <c-r>=expand("<cword>")<cr><cr>
+nnoremap f<c-]> :cs find f <c-r>=expand("<cfile>")<cr><cr>
+
 " source private vimrc file if available
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
