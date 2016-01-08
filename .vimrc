@@ -25,6 +25,39 @@ let g:plug_url_format = 'https://github.com/%s.git'
 " Plugin settings {{{
 if !s:is_windows
   Plug 'christoomey/vim-tmux-navigator'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim' "{{{
+    nnoremap <leader>e :Files<cr>
+    nnoremap <leader>E :History<cr>
+    nnoremap <leader>b :Buffer<cr>
+    nnoremap <leader>a :Ag<cr>
+    nnoremap <leader>t :BTags<cr>
+    nnoremap <leader>T :Tags<cr>
+    nnoremap <leader>h :Helptags<cr>
+  "}}}
+else
+  " too bad fzf doesn't support Windows... but we have the venerable ctrlp!
+  Plug 'felikz/ctrlp-py-matcher'
+  Plug 'ctrlpvim/ctrlp.vim' "{{{
+    nnoremap <leader>e :CtrlP<cr>
+    nnoremap <leader>E :CtrlPMRUFiles<cr>
+    nnoremap <leader>b :CtrlPBuffer<cr>
+    nnoremap <leader>t :CtrlPBufTag<cr>
+    nnoremap <leader>T :CtrlPTag<cr>
+    nnoremap <leader>r :CtrlPRTS<cr>
+
+    let g:ctrlp_match_window = 'bottom,order:btt,min:20,max:20,results:20'
+    let g:ctrlp_working_path_mode = 0
+    let g:ctrlp_custom_ignore = {
+          \ 'dir':  '\v[\/](\.git|\.hg|\.svn)$',
+          \ 'file': '\.pyc$\|\.pyo$',
+          \ }
+    let g:ctrlp_open_multiple_files = '1jr'
+    let g:ctrlp_max_files = 0
+    let g:ctrlp_lazy_update = 50
+    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+    let g:ctrlp_buftag_types = { 'ant': '--language-force=ant' }
+  "}}}
 endif
 Plug 'mhinz/vim-grepper' "{{{
   let g:grepper = {
@@ -99,28 +132,6 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
 Plug 'sjl/badwolf'
 Plug 'endel/vim-github-colorscheme'
 Plug 'vasconcelloslf/vim-interestingwords'
-Plug 'ctrlpvim/ctrlp.vim' "{{{
-  nnoremap <leader>e :CtrlP<cr>
-  nnoremap <leader>E :CtrlPMRUFiles<cr>
-  nnoremap <leader>a :CtrlPBuffer<cr>
-  nnoremap <leader>A :CtrlPCurFile<cr>
-  nnoremap <leader>t :CtrlPBufTag<cr>
-  nnoremap <leader>T :CtrlPTag<cr>
-  nnoremap <leader>r :CtrlPRTS<cr>
-
-  let g:ctrlp_match_window = 'bottom,order:btt,min:20,max:20,results:20'
-  let g:ctrlp_working_path_mode = 0
-  let g:ctrlp_custom_ignore = {
-        \ 'dir':  '\v[\/](\.git|\.hg|\.svn)$',
-        \ 'file': '\.pyc$\|\.pyo$',
-        \ }
-  let g:ctrlp_open_multiple_files = '1jr'
-  let g:ctrlp_max_files = 0
-  let g:ctrlp_lazy_update = 50
-  let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-  let g:ctrlp_buftag_types = { 'ant': '--language-force=ant' }
-"}}}
-Plug 'felikz/ctrlp-py-matcher'
 Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
   " rely on tab trigger
   let g:jedi#completions_command = ""
