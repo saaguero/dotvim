@@ -24,8 +24,7 @@ let g:plug_url_format = 'https://github.com/%s.git'
 
 " Plugin settings {{{
 if !s:is_windows
-  Plug 'christoomey/vim-tmux-navigator'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf', { 'do': './install --bin' }
   Plug 'junegunn/fzf.vim' "{{{
     nnoremap <leader>e :Files<cr>
     nnoremap <leader>E :History<cr>
