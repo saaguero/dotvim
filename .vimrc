@@ -30,6 +30,8 @@ if !s:is_windows
     nnoremap <leader>E :History<cr>
     nnoremap <leader>b :Buffer<cr>
     nnoremap <leader>a :Ag<cr>
+    nnoremap <leader>l :BLines<cr>
+    nnoremap <leader>L :Lines<cr>
     nnoremap <leader>t :BTags<cr>
     nnoremap <leader>T :Tags<cr>
     nnoremap <leader>h :Helptags<cr>
@@ -44,6 +46,7 @@ else
     nnoremap <leader>t :CtrlPBufTag<cr>
     nnoremap <leader>T :CtrlPTag<cr>
     nnoremap <leader>r :CtrlPRTS<cr>
+    nnoremap <leader>l :CtrlPLine<cr>
 
     let g:ctrlp_match_window = 'bottom,order:btt,min:20,max:20,results:20'
     let g:ctrlp_working_path_mode = 0
