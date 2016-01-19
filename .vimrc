@@ -39,7 +39,7 @@ if !s:is_windows
 else
   " too bad fzf doesn't support Windows... but we have the venerable ctrlp!
   Plug 'felikz/ctrlp-py-matcher'
-  Plug 'ctrlpvim/ctrlp.vim' "{{{
+  Plug 'kien/ctrlp.vim' "{{{
     nnoremap <leader>e :CtrlP<cr>
     nnoremap <leader>E :CtrlPMRUFiles<cr>
     nnoremap <leader>b :CtrlPBuffer<cr>
