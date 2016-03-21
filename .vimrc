@@ -212,9 +212,9 @@ if has("gui_running")
   set guioptions= " disable all UI options
   set guicursor+=a:blinkon0 " disable blinking cursor
   set ballooneval
-  autocmd GUIEnter * set visualbell t_vb=
+  autocmd GUIEnter * set novisualbell t_vb=
 else
-  set noerrorbells visualbell t_vb=
+  set noerrorbells novisualbell t_vb=
   if !s:is_nvim
     set term=xterm
   endif
