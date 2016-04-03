@@ -87,7 +87,6 @@ Plug 'haya14busa/incsearch.vim' "{{{
   map ?  <Plug>(incsearch-backward)
 "}}}
 Plug 'kana/vim-textobj-user'
-Plug 'bps/vim-textobj-python'
 Plug 'saaguero/vim-textobj-pastedtext'
 Plug 'konfekt/fastfold'
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -246,8 +245,8 @@ augroup CustomFiletype
   autocmd BufNewFile,BufRead *.md set filetype=markdown
   autocmd BufNewFile,BufRead *.gradle set filetype=groovy
 
-  autocmd FileType html,xml,javascript,json set tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd FileType python,vim setlocal foldmethod=indent
+  autocmd FileType html,xml,javascript,json,yaml set tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType python,vim,yaml setlocal foldmethod=indent
   autocmd FileType vim setlocal keywordprg=:help omnifunc=syntaxcomplete#Complete
   autocmd Filetype text setlocal textwidth=80
 augroup END
