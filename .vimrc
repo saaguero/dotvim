@@ -80,6 +80,8 @@ Plug 'mhinz/vim-grepper' "{{{
   nmap gs  <plug>(GrepperOperator)
   xmap gs  <plug>(GrepperOperator)
 "}}}
+Plug 'tommcdo/vim-lion'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'saaguero/vim-utils'
 Plug 'haya14busa/incsearch.vim' "{{{
   map /  <Plug>(incsearch-forward)
@@ -179,6 +181,8 @@ set ttimeoutlen=50
 set switchbuf=useopen
 set mouse=a
 set breakindent
+set autoindent
+set smarttab
 
 filetype plugin indent on
 syntax on
@@ -231,11 +235,7 @@ endif
 colorscheme badwolf
 "}}}
 
-" Spaces and Filetype settings {{{
-set autoindent
-set expandtab smarttab
-set tabstop=4 softtabstop=4 shiftwidth=4
-
+" Filetype settings {{{
 augroup CustomFiletype
   autocmd!
   autocmd BufNewFile,BufRead *.html set filetype=html.htmldjango
@@ -244,10 +244,8 @@ augroup CustomFiletype
   autocmd BufNewFile,BufRead *.md set filetype=markdown
   autocmd BufNewFile,BufRead *.gradle set filetype=groovy
 
-  autocmd FileType html,xml,javascript,json,yaml set tabstop=2 softtabstop=2 shiftwidth=2
   autocmd FileType python,vim,yaml setlocal foldmethod=indent
   autocmd FileType vim setlocal keywordprg=:help omnifunc=syntaxcomplete#Complete
-  autocmd Filetype text setlocal textwidth=80
 augroup END
 "}}}
 
