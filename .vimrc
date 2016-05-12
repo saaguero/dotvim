@@ -80,7 +80,10 @@ Plug 'mhinz/vim-grepper' "{{{
   nmap gs  <plug>(GrepperOperator)
   xmap gs  <plug>(GrepperOperator)
 "}}}
-Plug 'tommcdo/vim-lion'
+Plug 'junegunn/vim-easy-align' "{{{
+  xmap gl <Plug>(EasyAlign)
+  nmap gl <Plug>(EasyAlign)
+"}}}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'saaguero/vim-utils'
 Plug 'haya14busa/incsearch.vim' "{{{
