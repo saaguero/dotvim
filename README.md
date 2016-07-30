@@ -6,7 +6,7 @@ Run vim. The first time it will install the package manager `vim-plug` along wit
 
 Wiki
 ====
-For things about How to get Vim Binaries, How to Compile Vim, Different Vim Bindings, Vim Cheatsheet and others, visit https://github.com/saaguero/dotvim/wiki.
+For things about how to get vim binaries (or how to compile it), vim cheatsheet and others, visit https://github.com/saaguero/dotvim/wiki.
 
 Credits
 =======
