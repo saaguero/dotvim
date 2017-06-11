@@ -1,4 +1,4 @@
-" vim: fdm=marker ts=2 sts=2 sw=2 fdl=0
+" vim: fdm=marker ts=2 sts=2 sw=2
 
 " Variables {{{
 let mapleader = "\<Space>"
@@ -29,12 +29,14 @@ if !s:is_windows
     nnoremap <leader>e :Files<cr>
     nnoremap <leader>E :History<cr>
     nnoremap <leader>b :Buffer<cr>
-    nnoremap <leader>a :Ag<cr>
+    nnoremap <leader>aa :Ag<cr>
     nnoremap <leader>l :BLines<cr>
     nnoremap <leader>L :Lines<cr>
     nnoremap <leader>t :BTags<cr>
     nnoremap <leader>T :Tags<cr>
     nnoremap <leader>h :Helptags<cr>
+    " search current word with Ag
+    nnoremap <leader>aw :Ag <C-r>=expand('<cword>')<cr><cr>
   "}}}
 else
   " too bad fzf doesn't support Windows... but we have the venerable ctrlp!
@@ -61,25 +63,23 @@ else
     let g:ctrlp_buftag_types = { 'ant': '--language-force=ant' }
   "}}}
 endif
-Plug 'mhinz/vim-grepper' "{{{
-  let g:grepper = {
-      \ 'tools':     ['ag', 'csearch', 'findstr'],
-      \ 'dispatch':  1,
-      \ 'open':      1,
-      \ 'switch':    0,
-      \ 'jump':      0,
-      \ 'ag': {
-      \   'grepprg': 'ag --nogroup --nocolor --column',
-      \   'grepformat': '%f:%l:%c:%m'
-      \ },
-      \ 'csearch': {
-      \   'grepprg': 'csearch -n',
-      \   'grepformat': '%f:%l:%m'
-      \ }}
-
-  nmap gs  <plug>(GrepperOperator)
-  xmap gs  <plug>(GrepperOperator)
+Plug 'sbdchd/neoformat' "{{{
+  nnoremap <leader>f :Neoformat<cr>
+  vnoremap <leader>f :Neoformat<cr>
 "}}}
+Plug 'lifepillar/vim-mucomplete' "{{{
+  inoremap <silent> <plug>(MUcompleteFwdKey) <right>
+  imap <right> <plug>(MUcompleteCycFwd)
+  inoremap <silent> <plug>(MUcompleteBwdKey) <left>
+  imap <left> <plug>(MUcompleteCycBwd)
+"}}}
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
+Plug 'tpope/vim-scriptease'
+Plug 'neomake/neomake' "{{{
+  autocmd! BufWritePost * Neomake
+"}}}
+Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/vim-easy-align' "{{{
   xmap gl <Plug>(EasyAlign)
   nmap gl <Plug>(EasyAlign)
@@ -152,6 +152,15 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
   let g:jedi#documentation_command = "K"
   let g:jedi#rename_command = "<leader>r"
 "}}}
+if !s:is_nvim
+  Plug 'ramele/agrep' "{{{
+    let g:agrep_default_flags='-I --exclude-dir=.{git,svn,hg} --exclude=tags'
+    " search current word with Agrep
+    nnoremap <leader>w :Agrep -r <C-r>=expand('<cword>')<cr><cr>
+    nnoremap <A-up> :Aprev<cr>
+    nnoremap <A-down> :Anext<cr>
+  "}}}
+endif
 
 call plug#end()
 "}}}
@@ -186,6 +195,9 @@ set mouse=a
 set breakindent
 set autoindent
 set smarttab
+set updatetime=500
+set synmaxcol=200
+if has('patch-7.4.2201') | set signcolumn=yes | endif
 
 filetype plugin indent on
 syntax on
@@ -269,6 +281,8 @@ command! -bang W w<bang>
 
 " replace ex mode map and use it for repeating 'q' macro
 nnoremap Q @q
+" execute macro over visual selection
+xnoremap Q :'<,'>:normal @q<cr>
 
 " save as sudo
 cabbrev w!! w !sudo tee "%"
@@ -314,6 +328,9 @@ augroup CustomUtils
 
   " Close preview window when leaving insert mode http://stackoverflow.com/a/3107159/854676
   autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+  " Automatically equalize splits when Vim is resized
+  autocmd VimResized * wincmd =
 augroup END
 
 " clear the search buffer when hitting return
