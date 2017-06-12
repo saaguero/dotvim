@@ -152,6 +152,8 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
   let g:jedi#documentation_command = "K"
   let g:jedi#rename_command = "<leader>r"
 "}}}
+Plug 'cespare/vim-toml'
+Plug 'hashivim/vim-terraform'
 if !s:is_nvim
   Plug 'ramele/agrep' "{{{
     let g:agrep_default_flags='-I --exclude-dir=.{git,svn,hg} --exclude=tags'
