@@ -199,7 +199,7 @@ set breakindent
 set autoindent
 set smarttab
 set updatetime=500
-set synmaxcol=200
+set synmaxcol=400
 if has('patch-7.4.2201') | set signcolumn=yes | endif
 
 filetype plugin indent on
@@ -239,6 +239,7 @@ else
     set term=xterm
   endif
   set t_ut= " setting for looking properly in tmux
+  set t_BE= " disable bracketed-paste mode
   let &t_Co = 256
   if s:is_windows " trick to support 256 colors and scroll in conemu
     let &t_AF="\e[38;5;%dm"
