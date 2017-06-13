@@ -158,8 +158,8 @@ if !s:is_nvim
   Plug 'ramele/agrep' "{{{
     let g:agrep_default_flags='-I --exclude-dir=.{git,svn,hg} --exclude=tags'
     " search current word with Agrep
-    nnoremap <leader>w :Agrep -r <C-r>=expand('<cword>')<cr><cr>
-    nnoremap <leader>x :Aquickfix<cr> :cdo s///g \| update<left><left><left><left><left><left><left><left><left><left><left>
+    nnoremap <leader>w :let @/=expand('<cword>')<cr> :Agrep -r <C-r>/<cr>
+    nnoremap <leader>x :Aquickfix<cr> :cdo s/<C-r>///g \| update<left><left><left><left><left><left><left><left><left><left><left>
     nnoremap <A-up> :Aprev<cr>
     nnoremap <A-down> :Anext<cr>
   "}}}
