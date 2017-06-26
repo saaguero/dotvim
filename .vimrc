@@ -98,7 +98,11 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired' "{{{
+  " custom unimpaired-like mappings
+  nnoremap com :NeomakeToggle<cr>
+  nnoremap cog :GitGutterToggle<cr>
+"}}}
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' } "{{{
   augroup VimFireplace
     autocmd FileType clojure nmap <buffer> <C-]> <Plug>FireplaceDjump
