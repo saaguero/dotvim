@@ -134,7 +134,7 @@ Plug 'sirver/ultisnips', { 'on': [] } "{{{
   endfunction
 "}}}
 Plug 'saaguero/vim-snippets'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeFind' } "{{{
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
   nnoremap <silent> <F4> :NERDTreeToggle<CR>
   nnoremap <silent> <F5> :NERDTreeFind<CR>
 "}}}
