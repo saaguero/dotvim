@@ -35,11 +35,28 @@ if !s:is_windows
     nnoremap <leader>t :BTags<cr>
     nnoremap <leader>T :Tags<cr>
     nnoremap <leader>h :Helptags<cr>
+
     " search current word with Ag
     nnoremap <leader>aw :Ag <C-r>=expand('<cword>')<cr><cr>
+
+    " add preview window, you can optionally install coderay for syntax-highlighting
+    " when you aren't in fullscreen, press '?' to display it
+    command! -bang -nargs=* Ag
+      \ call fzf#vim#ag(<q-args>,
+      \                 "--hidden",
+      \                 <bang>0 ? fzf#vim#with_preview('up:75%')
+      \                         : fzf#vim#with_preview('right:50%:wrap:hidden', '?'),
+      \                 <bang>0)
+
+    command! -bang -nargs=? -complete=dir Files
+      \ call fzf#vim#files(<q-args>,e
+      \                    <bang>0 ? fzf#vim#with_preview('up:75%')
+      \                            : fzf#vim#with_preview('right:50%:wrap:hidden', '?'),
+      \                    <bang>0)
   "}}}
 else
-  " too bad fzf doesn't support Windows... but we have the venerable ctrlp!
+  " fzf is supported in Windows, specially if you use Windos Subsystem for Linux
+  " but I haven't tried it yet. In the meantime we have the venerable ctrlp!
   Plug 'felikz/ctrlp-py-matcher'
   Plug 'kien/ctrlp.vim' "{{{
     nnoremap <leader>e :CtrlP<cr>
