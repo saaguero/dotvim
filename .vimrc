@@ -37,7 +37,7 @@ if !s:is_windows
     nnoremap <leader>h :Helptags<cr>
 
     " search current word with Ag
-    nnoremap <leader>aw :Ag <C-r>=expand('<cword>')<cr><cr>
+    nnoremap <leader>w :let @/=expand('<cword>')<cr> :Ag <C-r>/<cr><a-a>
 
     " add preview window, you can optionally install coderay for syntax-highlighting
     " when you aren't in fullscreen, press '?' to display it
@@ -119,6 +119,10 @@ Plug 'tpope/vim-unimpaired' "{{{
   " custom unimpaired-like mappings
   nnoremap com :NeomakeToggle<cr>
   nnoremap cog :GitGutterToggle<cr>
+
+  " easier mappings for navigating the quickfix list
+  nnoremap <silent> <A-up> :cprevious<cr>
+  nnoremap <silent> <A-down> :cnext<cr>
 "}}}
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' } "{{{
   augroup VimFireplace
@@ -175,16 +179,10 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
 "}}}
 Plug 'cespare/vim-toml'
 Plug 'hashivim/vim-terraform'
-if !s:is_nvim
-  Plug 'ramele/agrep' "{{{
-    let g:agrep_default_flags='-I --exclude-dir=.{git,svn,hg} --exclude=tags'
-    " search current word with Agrep
-    nnoremap <leader>w :let @/=expand('<cword>')<cr> :Agrep -r <C-r>/<cr>
-    nnoremap <leader>x :Aquickfix<cr> :cdo s/<C-r>///g \| update<left><left><left><left><left><left><left><left><left><left><left>
-    nnoremap <A-up> :Aprev<cr>
-    nnoremap <A-down> :Anext<cr>
-  "}}}
-endif
+Plug 'Valloric/ListToggle' "{{{
+  let g:lt_location_list_toggle_map = '<leader>Q'
+  let g:lt_quickfix_list_toggle_map = '<leader>q'
+"}}}
 
 call plug#end()
 "}}}
@@ -330,7 +328,6 @@ nnoremap <silent> <c-j> <c-w>j
 nnoremap <silent> <c-h> <c-w>h
 nnoremap <silent> <c-k> <c-w>k
 nnoremap <silent> <leader>\ <c-^>
-nnoremap <silent> <leader>q :botright copen<cr>
 
 " easy terminal navigation (for nvim)
 if s:is_nvim
@@ -339,6 +336,9 @@ endif
 
 " cd to directory of current file
 nnoremap <silent> <leader>cd :lcd %:p:h<CR>
+
+" easy replace every match in the quickfix list
+nnoremap <leader>x :cdo s/<C-r>///g \| update<left><left><left><left><left><left><left><left><left><left><left>
 
 augroup CustomUtils
   autocmd!
