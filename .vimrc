@@ -49,7 +49,7 @@ if !s:is_windows
       \                 <bang>0)
 
     command! -bang -nargs=? -complete=dir Files
-      \ call fzf#vim#files(<q-args>,e
+      \ call fzf#vim#files(<q-args>,
       \                    <bang>0 ? fzf#vim#with_preview('up:75%')
       \                            : fzf#vim#with_preview('right:50%:wrap:hidden', '?'),
       \                    <bang>0)
