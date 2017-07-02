@@ -29,7 +29,7 @@ if !s:is_windows
     nnoremap <leader>e :Files<cr>
     nnoremap <leader>E :History<cr>
     nnoremap <leader>b :Buffer<cr>
-    nnoremap <leader>aa :Ag<cr>
+    nnoremap <leader>a :Ag<cr>
     nnoremap <leader>l :BLines<cr>
     nnoremap <leader>L :Lines<cr>
     nnoremap <leader>t :BTags<cr>
