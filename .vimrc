@@ -82,7 +82,7 @@ else
 endif
 Plug 'sbdchd/neoformat' "{{{
   nnoremap <leader>f :Neoformat<cr>
-  vnoremap <leader>f :Neoformat<cr>
+  xnoremap <leader>f :Neoformat<cr>
 "}}}
 Plug 'lifepillar/vim-mucomplete' "{{{
   inoremap <silent> <plug>(MUcompleteFwdKey) <right>
@@ -171,7 +171,7 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
   let g:jedi#use_tabs_not_buffers = 0
   let g:jedi#show_call_signatures = 0
 
-  let g:jedi#goto_definitions_command = "<C-]>"
+  let g:jedi#goto_command = "<C-]>"
   let g:jedi#goto_assignments_command = "<leader>]"
   let g:jedi#usages_command = "<leader>u"
   let g:jedi#documentation_command = "K"
@@ -182,6 +182,12 @@ Plug 'hashivim/vim-terraform'
 Plug 'Valloric/ListToggle' "{{{
   let g:lt_location_list_toggle_map = '<leader>Q'
   let g:lt_quickfix_list_toggle_map = '<leader>q'
+"}}}
+Plug 'AndrewRadev/linediff.vim' "{{{
+  autocmd User LinediffBufferReady nnoremap <buffer> q :LinediffReset<cr>
+  autocmd User LinediffBufferReady setlocal nocursorline
+  nnoremap <leader>d :Linediff<cr>
+  xnoremap <leader>d :Linediff<cr>
 "}}}
 
 call plug#end()
@@ -270,7 +276,11 @@ else
   endif
 endif
 
-colorscheme badwolf
+colorscheme badwolf "{{{
+  " Custom colors
+  highlight DiffText cterm=bold ctermfg=255 ctermbg=196
+"}}}
+
 "}}}
 
 " Filetype settings {{{
