@@ -103,10 +103,13 @@ Plug 'junegunn/vim-easy-align' "{{{
 "}}}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'saaguero/vim-utils'
-Plug 'haya14busa/incsearch.vim' "{{{
+if ! has('patch-8.0.1238')
+  " If you're using an old Vim without incsearch, replace it with:
+  Plug 'haya14busa/incsearch.vim' "{{{
   map /  <Plug>(incsearch-forward)
   map ?  <Plug>(incsearch-backward)
-"}}}
+  "}}}
+endif
 Plug 'kana/vim-textobj-user'
 Plug 'saaguero/vim-textobj-pastedtext'
 Plug 'konfekt/fastfold'
