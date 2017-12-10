@@ -93,8 +93,8 @@ Plug 'lifepillar/vim-mucomplete' "{{{
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-scriptease'
-Plug 'neomake/neomake' "{{{
-  autocmd! BufWritePost * Neomake
+Plug 'w0rp/ale' "{{{
+  let g:ale_linters = {'spec': ['rpmlint']}
 "}}}
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/vim-easy-align' "{{{
@@ -120,7 +120,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired' "{{{
   " custom unimpaired-like mappings
-  nnoremap com :NeomakeToggle<cr>
+  nnoremap coa :ALEToggle<cr>
   nnoremap cog :GitGutterToggle<cr>
 
   " easier mappings for navigating the quickfix list
