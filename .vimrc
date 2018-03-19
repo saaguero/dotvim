@@ -53,6 +53,13 @@ if !s:is_windows
       \                    <bang>0 ? fzf#vim#with_preview('up:75%')
       \                            : fzf#vim#with_preview('right:50%:wrap:hidden', '?'),
       \                    <bang>0)
+
+    command! -bang -nargs=* Rg
+          \ call fzf#vim#grep(
+          \   'rg --column --line-number --no-heading --color=always --ignore-case '.shellescape(<q-args>), 1,
+          \   <bang>0 ? fzf#vim#with_preview('up:60%')
+          \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+          \   <bang>0)
   "}}}
 else
   " fzf is supported in Windows, specially if you use Windos Subsystem for Linux
@@ -96,6 +103,7 @@ Plug 'tpope/vim-scriptease'
 Plug 'w0rp/ale' "{{{
   let g:ale_linters = {'spec': ['rpmlint']}
 "}}}
+Plug 'xtal8/traces.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/vim-easy-align' "{{{
   xmap gl <Plug>(EasyAlign)
