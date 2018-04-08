@@ -350,9 +350,10 @@ nnoremap <silent> <c-h> <c-w>h
 nnoremap <silent> <c-k> <c-w>k
 nnoremap <silent> <leader>\ <c-^>
 
-" easy terminal navigation (for nvim)
-if s:is_nvim
+" easy terminal navigation
+if has('terminal') || s:is_nvim
   tnoremap <esc><esc> <C-\><C-n>
+  tnoremap <PageUp> <C-W>N<C-U>
 endif
 
 " cd to directory of current file
