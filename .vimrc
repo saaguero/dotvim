@@ -200,6 +200,9 @@ Plug 'AndrewRadev/linediff.vim' "{{{
   nnoremap <leader>d :Linediff<cr>
   xnoremap <leader>d :Linediff<cr>
 "}}}
+Plug 'christoomey/vim-tmux-navigator' "{{{
+  let g:tmux_navigator_save_on_switch = 1
+"}}}
 
 call plug#end()
 "}}}
