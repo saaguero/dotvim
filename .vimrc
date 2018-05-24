@@ -106,8 +106,12 @@ Plug 'w0rp/ale' "{{{
 Plug 'xtal8/traces.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/vim-easy-align' "{{{
-  xmap gl <Plug>(EasyAlign)
-  nmap gl <Plug>(EasyAlign)
+  " Align everything, since by default it doesn't align inside a comment
+  let g:easy_align_ignore_groups = []
+  let g:easy_align_delimiters = {
+    \ ';': { 'pattern': ';', 'left_margin': 0, 'stick_to_left': 1 } }
+  xmap gl <Plug>(LiveEasyAlign)
+  nmap gl <Plug>(LiveEasyAlign)
 "}}}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'saaguero/vim-utils'
