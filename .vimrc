@@ -90,7 +90,7 @@ Plug 'lifepillar/vim-mucomplete' "{{{
   inoremap <silent> <plug>(MUcompleteBwdKey) <left>
   imap <left> <plug>(MUcompleteCycBwd)
 "}}}
-Plug 'tpope/vim-fugitive'
+Plug 'lambdalisue/gina.vim'
 Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-scriptease'
 Plug 'w0rp/ale' "{{{
