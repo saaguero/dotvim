@@ -29,25 +29,18 @@ if !s:is_windows
     nnoremap <leader>e :Files<cr>
     nnoremap <leader>E :History<cr>
     nnoremap <leader>b :Buffer<cr>
-    nnoremap <leader>a :Ag<cr>
+    nnoremap <leader>a :Rg<cr>
     nnoremap <leader>l :BLines<cr>
     nnoremap <leader>L :Lines<cr>
     nnoremap <leader>t :BTags<cr>
     nnoremap <leader>T :Tags<cr>
     nnoremap <leader>h :Helptags<cr>
 
-    " search current word with Ag
-    nnoremap <leader>w :let @/=expand('<cword>')<cr> :Ag <C-r>/<cr><a-a>
+    " search current word with Rg
+    nnoremap <leader>w :let @/=expand('<cword>')<cr> :Rg <C-r>/<cr><a-a>
 
     " add preview window, you can optionally install coderay for syntax-highlighting
-    " when you aren't in fullscreen, press '?' to display it
-    command! -bang -nargs=* Ag
-      \ call fzf#vim#ag(<q-args>,
-      \                 "--hidden",
-      \                 <bang>0 ? fzf#vim#with_preview('up:75%')
-      \                         : fzf#vim#with_preview('right:50%:wrap:hidden', '?'),
-      \                 <bang>0)
-
+    " if you aren't in fullscreen, press '?' to display it
     command! -bang -nargs=? -complete=dir Files
       \ call fzf#vim#files(<q-args>,
       \                    <bang>0 ? fzf#vim#with_preview('up:75%')
@@ -56,7 +49,7 @@ if !s:is_windows
 
     command! -bang -nargs=* Rg
           \ call fzf#vim#grep(
-          \   'rg --column --line-number --no-heading --color=always --ignore-case '.shellescape(<q-args>), 1,
+          \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
           \   <bang>0 ? fzf#vim#with_preview('up:60%')
           \           : fzf#vim#with_preview('right:50%:hidden', '?'),
           \   <bang>0)
