@@ -91,7 +91,6 @@ Plug 'lifepillar/vim-mucomplete' "{{{
   imap <left> <plug>(MUcompleteCycBwd)
 "}}}
 Plug 'lambdalisue/gina.vim'
-Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-scriptease'
 Plug 'w0rp/ale' "{{{
   let g:ale_linters = {'spec': ['rpmlint']}
@@ -118,7 +117,6 @@ endif
 Plug 'kana/vim-textobj-user'
 Plug 'saaguero/vim-textobj-pastedtext'
 Plug 'konfekt/fastfold'
-Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -185,8 +183,6 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
   let g:jedi#documentation_command = "K"
   let g:jedi#rename_command = "<leader>r"
 "}}}
-Plug 'cespare/vim-toml'
-Plug 'hashivim/vim-terraform'
 Plug 'Valloric/ListToggle' "{{{
   let g:lt_location_list_toggle_map = '<leader>Q'
   let g:lt_quickfix_list_toggle_map = '<leader>q'
@@ -200,6 +196,7 @@ Plug 'AndrewRadev/linediff.vim' "{{{
 Plug 'christoomey/vim-tmux-navigator' "{{{
   let g:tmux_navigator_save_on_switch = 1
 "}}}
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 "}}}
