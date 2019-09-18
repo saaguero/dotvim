@@ -86,6 +86,7 @@ Plug 'sbdchd/neoformat' "{{{
 "}}}
 Plug 'lambdalisue/gina.vim'
 Plug 'tpope/vim-scriptease'
+Plug 'tpope/vim-fugitive'
 Plug 'w0rp/ale' "{{{
   let g:ale_linters = {'spec': ['rpmlint']}
 "}}}
