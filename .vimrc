@@ -289,6 +289,7 @@ Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'} "{{{
   " nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
   "}}}
 
+Plug 'wincent/terminus'
 call plug#end()
 "}}}
 
