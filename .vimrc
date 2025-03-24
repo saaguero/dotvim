@@ -55,7 +55,7 @@ if !s:is_windows
           \   <bang>0)
   "}}}
 else
-  " fzf is supported in Windows, specially if you use Windos Subsystem for Linux
+  " fzf is supported in Windows, specially if you use WSL
   " but I haven't tried it yet. In the meantime we have the venerable ctrlp!
   Plug 'felikz/ctrlp-py-matcher'
   Plug 'kien/ctrlp.vim' "{{{
@@ -92,9 +92,6 @@ Plug 'lifepillar/vim-mucomplete' "{{{
 "}}}
 Plug 'lambdalisue/gina.vim'
 Plug 'tpope/vim-scriptease'
-Plug 'w0rp/ale' "{{{
-  let g:ale_linters = {'spec': ['rpmlint']}
-"}}}
 Plug 'xtal8/traces.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/vim-easy-align' "{{{
@@ -121,6 +118,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired' "{{{
   " custom unimpaired-like mappings
   nnoremap coa :ALEToggle<cr>
@@ -168,21 +166,6 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
 Plug 'sjl/badwolf'
 Plug 'endel/vim-github-colorscheme'
 Plug 'vasconcelloslf/vim-interestingwords'
-Plug 'davidhalter/jedi-vim', {'for': 'python'} "{{{
-  " rely on tab trigger
-  let g:jedi#completions_command = ""
-  let g:jedi#popup_on_dot = 0
-  " prevents jedi to mess with completeopt
-  let g:jedi#auto_vim_configuration = 0
-  let g:jedi#use_tabs_not_buffers = 0
-  let g:jedi#show_call_signatures = 0
-
-  let g:jedi#goto_command = "<C-]>"
-  let g:jedi#goto_assignments_command = "<leader>]"
-  let g:jedi#usages_command = "<leader>u"
-  let g:jedi#documentation_command = "K"
-  let g:jedi#rename_command = "<leader>r"
-"}}}
 Plug 'Valloric/ListToggle' "{{{
   let g:lt_location_list_toggle_map = '<leader>Q'
   let g:lt_quickfix_list_toggle_map = '<leader>q'
@@ -196,8 +179,14 @@ Plug 'AndrewRadev/linediff.vim' "{{{
 Plug 'christoomey/vim-tmux-navigator' "{{{
   let g:tmux_navigator_save_on_switch = 1
 "}}}
+Plug 'github/copilot.vim'
 Plug 'sheerun/vim-polyglot'
-
+Plug 'prabirshrestha/vim-lsp' "{{{
+  let g:lsp_document_highlight_enabled = 0
+"}}}
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'mattn/vim-lsp-settings'
 call plug#end()
 "}}}
 
@@ -287,6 +276,7 @@ endif
 colorscheme badwolf "{{{
   " Custom colors
   highlight DiffText cterm=bold ctermfg=255 ctermbg=196
+  highlight lspReference ctermfg=red guifg=red ctermbg=green guibg=green
 "}}}
 
 "}}}
@@ -385,6 +375,9 @@ nnoremap d<c-]> :cs find d <c-r>=expand("<cword>")<cr><cr>
 nnoremap c<c-]> :cs find c <c-r>=expand("<cword>")<cr><cr>
 nnoremap t<c-]> :cs find t <c-r>=expand("<cword>")<cr><cr>
 nnoremap f<c-]> :cs find f <c-r>=expand("<cfile>")<cr><cr>
+
+" misc
+nnoremap <silent><leader>X :silent !chmod +x %<cr>:redraw!<cr>:echo "Executed: chmod +x %"<cr>
 
 " source private vimrc file if available
 if filereadable(expand("~/.vimrc.local"))
