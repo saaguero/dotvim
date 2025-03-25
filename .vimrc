@@ -155,10 +155,19 @@ Plug 'sirver/ultisnips', { 'on': [] } "{{{
   endfunction
 "}}}
 Plug 'saaguero/vim-snippets'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
-  nnoremap <leader>f :NERDTreeToggle<CR>
-  nnoremap <leader>F :NERDTreeFind<CR>
-"}}}
+if !has('vim9script') || v:version < 901
+  " Fallback to nerdtree if vim9script is not available
+  Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
+    nnoremap <leader>f :NERDTreeToggle<CR>
+    nnoremap <leader>F :NERDTreeFind<CR>
+  "}}}
+else
+  Plug 'ycm/poplar.vim' "{{{
+    nnoremap <silent> <leader>f :Poplar<cr>
+    highlight! link PoplarMenu Normal
+    highlight! link PoplarMenuSel CursorLine
+  "}}}
+endif
 Plug 'sjl/badwolf'
 Plug 'endel/vim-github-colorscheme'
 Plug 'vasconcelloslf/vim-interestingwords'
@@ -272,7 +281,7 @@ endif
 colorscheme badwolf "{{{
   " Custom colors
   highlight DiffText cterm=bold ctermfg=255 ctermbg=196
-  highlight lspReference ctermfg=red guifg=red ctermbg=green guibg=green
+  highlight lspReference ctermfg=brown guifg=brown ctermbg=black guibg=brown
 "}}}
 
 "}}}
