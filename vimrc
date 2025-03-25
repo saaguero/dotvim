@@ -80,10 +80,6 @@ else
     let g:ctrlp_buftag_types = { 'ant': '--language-force=ant' }
   "}}}
 endif
-Plug 'sbdchd/neoformat' "{{{
-  nnoremap <leader>f :Neoformat<cr>
-  xnoremap <leader>f :Neoformat<cr>
-"}}}
 Plug 'lifepillar/vim-mucomplete' "{{{
   inoremap <silent> <plug>(MUcompleteFwdKey) <right>
   imap <right> <plug>(MUcompleteCycFwd)
@@ -160,8 +156,8 @@ Plug 'sirver/ultisnips', { 'on': [] } "{{{
 "}}}
 Plug 'saaguero/vim-snippets'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "{{{
-  nnoremap <silent> <F4> :NERDTreeToggle<CR>
-  nnoremap <silent> <F5> :NERDTreeFind<CR>
+  nnoremap <leader>f :NERDTreeToggle<CR>
+  nnoremap <leader>F :NERDTreeFind<CR>
 "}}}
 Plug 'sjl/badwolf'
 Plug 'endel/vim-github-colorscheme'
@@ -182,7 +178,7 @@ Plug 'christoomey/vim-tmux-navigator' "{{{
 Plug 'github/copilot.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'prabirshrestha/vim-lsp' "{{{
-  let g:lsp_document_highlight_enabled = 0
+  let g:lsp_diagnostics_enabled = 0
 "}}}
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
@@ -376,8 +372,10 @@ nnoremap c<c-]> :cs find c <c-r>=expand("<cword>")<cr><cr>
 nnoremap t<c-]> :cs find t <c-r>=expand("<cword>")<cr><cr>
 nnoremap f<c-]> :cs find f <c-r>=expand("<cfile>")<cr><cr>
 
-" misc
-nnoremap <silent><leader>X :silent !chmod +x %<cr>:redraw!<cr>:echo "Executed: chmod +x %"<cr>
+" mostly from https://github.com/ThePrimeagen/init.lua
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>X :silent !chmod +x %<cr>:redraw!<cr>:echo "Executed: chmod +x %"<cr>
+nnoremap <c-f> :silent !tmux neww tmux-sessionizer<cr>:redraw!<cr>
 
 " source private vimrc file if available
 if filereadable(expand("~/.vimrc.local"))
