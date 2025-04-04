@@ -381,13 +381,18 @@ nnoremap c<c-]> :cs find c <c-r>=expand("<cword>")<cr><cr>
 nnoremap t<c-]> :cs find t <c-r>=expand("<cword>")<cr><cr>
 nnoremap f<c-]> :cs find f <c-r>=expand("<cfile>")<cr><cr>
 
-" mostly from https://github.com/ThePrimeagen/init.lua
+" On nowrap on long lines it's much easier to use gj and gk than jumping the
+noremap <expr> k v:count == 0 ? 'gk' : 'k'
+noremap <expr> j v:count == 0 ? 'gj' : 'j'
+
+" others
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>X :silent !chmod +x %<cr>:redraw!<cr>:echo "Executed: chmod +x %"<cr>
 nnoremap <c-f> :silent !tmux neww tmux-sessionizer<cr>:redraw!<cr>
 
 " source private vimrc file if available
 if filereadable(expand("~/.vimrc.local"))
+  jsadfkl
   source ~/.vimrc.local
 endif
 "}}}
