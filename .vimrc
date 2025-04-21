@@ -340,7 +340,7 @@ nnoremap <silent> <c-l> <c-w>l
 nnoremap <silent> <c-j> <c-w>j
 nnoremap <silent> <c-h> <c-w>h
 nnoremap <silent> <c-k> <c-w>k
-nnoremap <silent> <leader>\ <c-^>
+nnoremap <silent> <leader>/ <c-^>
 
 " easy terminal navigation
 if has('terminal') || s:is_nvim
@@ -372,8 +372,8 @@ augroup CustomUtils
   autocmd VimResized * wincmd =
 augroup END
 
-" clear the search buffer when hitting return
-nnoremap <silent> <leader><cr> :nohlsearch<cr>
+" clear the search buffer when hitting <leader><esc>
+nnoremap <silent> <leader><esc> :nohlsearch<cr>
 
 " cscope
 nnoremap d<c-]> :cs find d <c-r>=expand("<cword>")<cr><cr>
