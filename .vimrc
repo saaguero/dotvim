@@ -99,7 +99,6 @@ Plug 'junegunn/vim-easy-align' "{{{
   nmap gl <Plug>(LiveEasyAlign)
 "}}}
 Plug 'editorconfig/editorconfig-vim'
-Plug 'saaguero/vim-utils'
 if ! has('patch-8.0.1238')
   " If you're using an old Vim without incsearch, replace it with:
   Plug 'haya14busa/incsearch.vim' "{{{
@@ -134,6 +133,9 @@ Plug 'raimondi/delimitmate' "{{{
 "}}}
 Plug 'terryma/vim-multiple-cursors' "{{{
   let g:multi_cursor_exit_from_insert_mode = 0
+  " Easy multiple cursors under word or selection
+  nnoremap <space>n :MultipleCursorsFind \<<C-r>=expand('<cword>')<CR>\><cr>
+  vnoremap <space>n :<C-u>MultipleCursorsFind <C-r>=GetVisualSelection()<CR><cr>
 "}}}
 Plug 'vim-scripts/matchit.zip'
 Plug 'sirver/ultisnips', { 'on': [] } "{{{
@@ -154,7 +156,7 @@ Plug 'sirver/ultisnips', { 'on': [] } "{{{
     return ""
   endfunction
 "}}}
-Plug 'saaguero/vim-snippets'
+Plug 'honza/vim-snippets'
 if has('vim9script') && v:version >= 901
   " This is like NERDTree && harpoon
   Plug 'ycm/poplar.vim' "{{{
@@ -381,14 +383,118 @@ nnoremap c<c-]> :cs find c <c-r>=expand("<cword>")<cr><cr>
 nnoremap t<c-]> :cs find t <c-r>=expand("<cword>")<cr><cr>
 nnoremap f<c-]> :cs find f <c-r>=expand("<cfile>")<cr><cr>
 
-" On wrap on long lines it's much easier to use gj and gk than jumping the
+" On wrapped long lines it's much easier to use gj and gk
 noremap <expr> k v:count == 0 ? 'gk' : 'k'
 noremap <expr> j v:count == 0 ? 'gj' : 'j'
 
 " others
-nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>X :silent !chmod +x %<cr>:redraw!<cr>:echo "Executed: chmod +x %"<cr>
 nnoremap <c-f> :silent !tmux neww tmux-sessionizer<cr>:redraw!<cr>
+
+" convenient grep command with sane defaults (use when you don't have ripgrep)
+command! -nargs=+ Grep execute 'grep -I --exclude-dir=.{git,svn.hg} --exclude=t" Easy change repeteable with dot (from romainl/dotvim)
+nnoremap <leader>u :Grep -r "" . <left><left><left><left>
+
+""" useful things {{{
+" source vimscript operator
+function! SourceVimscript(type)
+    let sel_save = &selection
+    let &selection = "inclusive"
+    let reg_save = @"
+
+    if a:type == 'line'
+        silent execute "normal! '[V']y"
+    elseif a:type == 'char'
+        silent execute "normal! `[v`]y"
+    elseif a:type == "visual"
+        silent execute "normal! gvy"
+    elseif a:type == "currentline"
+        silent execute "normal! yy"
+    endif
+
+    let @" = substitute(@", '\n\s*\\', '', 'g')
+
+    " source the content
+    @"
+
+    let &selection = sel_save
+    let @" = reg_save
+endfunction
+
+nnoremap <silent> <leader>s :set opfunc=SourceVimscript<CR>g@
+vnoremap <silent> <leader>s :<C-U>call SourceVimscript("visual")<CR>
+nnoremap <silent> <leader>ss :call SourceVimscript("currentline")<CR>
+nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
+
+" split lines on whitespace
+" repeatable (requires vim-repeat)
+function! SplitOnSpace()
+  let current_char = getline('.')[col('.') - 1]
+  if current_char == ' '
+    execute "normal i\r\e"
+  else
+    execute "normal f\<space>i\r\e"
+  endif
+  silent! call repeat#set("\<Plug>CustomSplitOnSpace")
+endfunction
+
+nnoremap <silent> <Plug>CustomSplitOnSpace :call SplitOnSpace()<cr>
+nnoremap <silent> <leader>j :call SplitOnSpace()<cr>
+
+function! GetVisualSelection()
+  let old_reg = @v
+  normal! gv"vy
+  let raw_search = @v
+  let @v = old_reg
+  return substitute(escape(raw_search, '\/.*$^~[]'), "\n", '\\n', "g")
+endfunction
+
+" Easy search/replace (from romainl/dotvim)
+nnoremap <space><space> :%s/\<<C-r>=expand('<cword>')<CR>\>/
+vnoremap <space><space> :<C-u>%s/<C-r>=GetVisualSelection()<CR>/
+
+function! FormatJsonFun(a1, a2)
+  if a:a1 == a:a2
+    .!python -m json.tool
+  else
+    execute a:a1 . "," . a:a2 . "!python -m json.tool"
+  endif
+  normal! gg=G
+endfunction
+
+command! -range FormatJson call FormatJsonFun(<line1>, <line2>)
+
+function! RunCommand()
+    let s:sel = GetVisualSelection()
+    let s:result = system(s:sel)
+    if !v:shell_error
+        set paste
+        execute "normal gvc" . s:result
+        set nopaste
+    else
+        echom 'Error executing command: ' . s:sel
+    endif
+endfunction
+
+" Run bash command
+nnoremap <leader>! !!bash<cr>
+vnoremap <leader>! :<c-u>call RunCommand()<cr>
+
+" makes * and # work on visual mode. Taken from nelstrom/vim-visual-star-search
+function! s:VSetSearch(cmdtype)
+  let temp = @s
+  norm! gv"sy
+  let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
+  let @s = temp
+endfunction
+
+xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
+
+" Easy change word or selection, and then repeatable with dot
+nnoremap <space>r *``cgn
+vmap <space>r *``cgn
+"}}}
 
 " source private vimrc file if available
 if filereadable(expand("~/.vimrc.local"))
