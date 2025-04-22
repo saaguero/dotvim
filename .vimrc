@@ -374,8 +374,8 @@ augroup CustomUtils
   autocmd VimResized * wincmd =
 augroup END
 
-" clear the search buffer when hitting <leader><esc>
-nnoremap <silent> <leader><esc> :nohlsearch<cr>
+" clear the search buffer when hitting <leader><cr>
+nnoremap <silent> <leader><cr> :nohlsearch<cr>
 
 " cscope
 nnoremap d<c-]> :cs find d <c-r>=expand("<cword>")<cr><cr>
