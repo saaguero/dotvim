@@ -171,6 +171,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeFind' } "{{{
   nnoremap <leader>F :NERDTreeFind<CR>
 "}}}
 Plug 'sjl/badwolf'
+Plug 'bluz71/vim-moonfly-colors'
 Plug 'endel/vim-github-colorscheme'
 Plug 'vasconcelloslf/vim-interestingwords'
 Plug 'Valloric/ListToggle' "{{{
@@ -280,10 +281,10 @@ else
   endif
 endif
 
-colorscheme badwolf "{{{
+colorscheme moonfly "{{{
   " Custom colors
-  highlight DiffText cterm=bold ctermfg=255 ctermbg=196
-  highlight lspReference ctermfg=brown guifg=brown ctermbg=black guibg=brown
+  " highlight DiffText cterm=bold ctermfg=255 ctermbg=196
+  " highlight lspReference ctermfg=brown guifg=brown ctermbg=black guibg=brown
 "}}}
 
 "}}}
