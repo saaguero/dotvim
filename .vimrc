@@ -26,6 +26,9 @@ let g:plug_url_format = 'https://github.com/%s.git'
 if !s:is_windows
   Plug 'junegunn/fzf', { 'do': './install --bin' }
   Plug 'junegunn/fzf.vim' "{{{
+    " TIP: on multiple selections, fzf populates the quickfix list
+    " Select all with <alt-a> and deselect all with <alt-d>
+    " With <tab> and <shift-tab> you can select individual items
     nnoremap <leader>e :Files<cr>
     nnoremap <leader>E :History<cr>
     nnoremap <leader>b :Buffer<cr>
@@ -37,9 +40,9 @@ if !s:is_windows
     nnoremap <leader>h :Helptags<cr>
 
     " search current word with Rg
-    nnoremap <leader>w :let @/=expand('<cword>')<cr> :Rg <C-r>/<cr><a-a>
+    nnoremap <leader>w :let @/=expand('<cword>')<cr> :Rg <C-r>/<cr>
 
-    " add preview window, you can optionally install coderay for syntax-highlighting
+    " add preview window, install https://github.com/sharkdp/bat.git for syntax-highlighting
     " if you aren't in fullscreen, press '?' to display it
     command! -bang -nargs=? -complete=dir Files
       \ call fzf#vim#files(<q-args>,
@@ -64,7 +67,6 @@ else
     nnoremap <leader>b :CtrlPBuffer<cr>
     nnoremap <leader>t :CtrlPBufTag<cr>
     nnoremap <leader>T :CtrlPTag<cr>
-    nnoremap <leader>r :CtrlPRTS<cr>
     nnoremap <leader>l :CtrlPLine<cr>
 
     let g:ctrlp_match_window = 'bottom,order:btt,min:20,max:20,results:20'
@@ -134,8 +136,8 @@ Plug 'raimondi/delimitmate' "{{{
 Plug 'terryma/vim-multiple-cursors' "{{{
   let g:multi_cursor_exit_from_insert_mode = 0
   " Easy multiple cursors under word or selection
-  nnoremap <space>n :MultipleCursorsFind \<<C-r>=expand('<cword>')<CR>\><cr>
-  vnoremap <space>n :<C-u>MultipleCursorsFind <C-r>=GetVisualSelection()<CR><cr>
+  nnoremap <leader>n :MultipleCursorsFind \<<C-r>=expand('<cword>')<CR>\><cr>
+  vnoremap <leader>n :<C-u>MultipleCursorsFind <C-r>=GetVisualSelection()<CR><cr>
 "}}}
 Plug 'vim-scripts/matchit.zip'
 Plug 'sirver/ultisnips', { 'on': [] } "{{{
@@ -173,7 +175,14 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeFind' } "{{{
 Plug 'sjl/badwolf'
 Plug 'bluz71/vim-moonfly-colors'
 Plug 'endel/vim-github-colorscheme'
-Plug 'vasconcelloslf/vim-interestingwords'
+Plug 'vasconcelloslf/vim-interestingwords' "{{{
+  let g:interestingWordsDefaultMappings = 0
+  nnoremap <silent> <leader>i :call InterestingWords('n')<cr>
+  vnoremap <silent> <leader>i :call InterestingWords('v')<cr>
+  nnoremap <silent> <leader>I :call UncolorAllWords()<cr>
+  nnoremap <silent> n :call WordNavigation(1)<cr>
+  nnoremap <silent> N :call WordNavigation(0)<cr>
+"}}}
 Plug 'Valloric/ListToggle' "{{{
   let g:lt_location_list_toggle_map = '<leader>Q'
   let g:lt_quickfix_list_toggle_map = '<leader>q'
@@ -195,6 +204,15 @@ Plug 'prabirshrestha/vim-lsp' "{{{
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'mattn/vim-lsp-settings'
+Plug 'easymotion/vim-easymotion' "{{{
+  let g:EasyMotion_do_mapping = 0 " Disable default mappings
+  let g:EasyMotion_smartcase = 1
+  nmap <leader>s <Plug>(easymotion-overwin-f)
+  " To be tested: need one more keystroke, but on average, it may be more comfortable.
+  " nmap s <Plug>(easymotion-overwin-f2)
+  nmap <leader>j <Plug>(easymotion-w)
+  nmap <leader>k <Plug>(easymotion-b)
+"}}}
 call plug#end()
 "}}}
 
@@ -336,7 +354,17 @@ noremap <Leader>P "+P
 xnoremap p "0p
 
 " copy full file path to clipboard
-nnoremap <silent><Leader>gp :let @+ = expand("%:p")<cr>
+nnoremap <silent><Leader>gp :let @+ = expand("%:p")<cr>:echo "File path copied!"<cr>
+
+" easy add file execution permissions
+nnoremap <silent><leader>gx :silent !chmod +x %<cr>:redraw!<cr>:echo "Executed: chmod +x " . expand("%")<cr>
+
+" make c-f the same as our terminal hotkey to handle tmux sessions
+nnoremap <c-f> :silent !tmux neww tmux-sessionizer<cr>:redraw!<cr>
+
+" convenient grep command with sane defaults, populates the quickfix list
+command! -nargs=+ Grep execute 'grep -I --exclude-dir=.{git,svn.hg} --exclude=tags <args>'
+nnoremap <leader>u :Grep -r "" . <left><left><left><left>
 
 " easy window navigation
 nnoremap <silent> <c-l> <c-w>l
@@ -388,14 +416,6 @@ nnoremap f<c-]> :cs find f <c-r>=expand("<cfile>")<cr><cr>
 noremap <expr> k v:count == 0 ? 'gk' : 'k'
 noremap <expr> j v:count == 0 ? 'gj' : 'j'
 
-" others
-nnoremap <leader>X :silent !chmod +x %<cr>:redraw!<cr>:echo "Executed: chmod +x %"<cr>
-nnoremap <c-f> :silent !tmux neww tmux-sessionizer<cr>:redraw!<cr>
-
-" convenient grep command with sane defaults (use when you don't have ripgrep)
-command! -nargs=+ Grep execute 'grep -I --exclude-dir=.{git,svn.hg} --exclude=t" Easy change repeteable with dot (from romainl/dotvim)
-nnoremap <leader>u :Grep -r "" . <left><left><left><left>
-
 """ useful things {{{
 " source vimscript operator
 function! SourceVimscript(type)
@@ -422,10 +442,10 @@ function! SourceVimscript(type)
     let @" = reg_save
 endfunction
 
-nnoremap <silent> <leader>s :set opfunc=SourceVimscript<CR>g@
-vnoremap <silent> <leader>s :<C-U>call SourceVimscript("visual")<CR>
-nnoremap <silent> <leader>ss :call SourceVimscript("currentline")<CR>
-nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
+nnoremap <silent> <leader>v :set opfunc=SourceVimscript<CR>g@
+vnoremap <silent> <leader>v :<C-U>call SourceVimscript("visual")<CR>
+nnoremap <silent> <leader>vv :call SourceVimscript("currentline")<CR>
+nnoremap <silent> <leader>vs :source $MYVIMRC<cr>
 
 " split lines on whitespace
 " repeatable (requires vim-repeat)
@@ -440,7 +460,7 @@ function! SplitOnSpace()
 endfunction
 
 nnoremap <silent> <Plug>CustomSplitOnSpace :call SplitOnSpace()<cr>
-nnoremap <silent> <leader>j :call SplitOnSpace()<cr>
+nnoremap <silent> <leader>\ :call SplitOnSpace()<cr>
 
 function! GetVisualSelection()
   let old_reg = @v
@@ -451,8 +471,8 @@ function! GetVisualSelection()
 endfunction
 
 " Easy search/replace (from romainl/dotvim)
-nnoremap <space><space> :%s/\<<C-r>=expand('<cword>')<CR>\>/
-vnoremap <space><space> :<C-u>%s/<C-r>=GetVisualSelection()<CR>/
+nnoremap <leader>r :%s/\<<C-r>=expand('<cword>')<CR>\>/
+vnoremap <leader>r :<C-u>%s/<C-r>=GetVisualSelection()<CR>/
 
 function! FormatJsonFun(a1, a2)
   if a:a1 == a:a2
@@ -491,10 +511,6 @@ endfunction
 
 xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
-
-" Easy change word or selection, and then repeatable with dot
-nnoremap <space>r *``cgn
-vmap <space>r *``cgn
 "}}}
 
 " source private vimrc file if available
