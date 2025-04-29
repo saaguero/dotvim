@@ -207,9 +207,7 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'easymotion/vim-easymotion' "{{{
   let g:EasyMotion_do_mapping = 0 " Disable default mappings
   let g:EasyMotion_smartcase = 1
-  nmap <leader>s <Plug>(easymotion-overwin-f)
-  " To be tested: need one more keystroke, but on average, it may be more comfortable.
-  " nmap s <Plug>(easymotion-overwin-f2)
+  nmap <leader>s <Plug>(easymotion-overwin-f2)
   nmap <leader>j <Plug>(easymotion-w)
   nmap <leader>k <Plug>(easymotion-b)
 "}}}
