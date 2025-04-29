@@ -159,17 +159,8 @@ Plug 'sirver/ultisnips', { 'on': [] } "{{{
   endfunction
 "}}}
 Plug 'honza/vim-snippets'
-if has('vim9script') && v:version >= 901
-  " This is like NERDTree && harpoon
-  Plug 'ycm/poplar.vim' "{{{
-    nnoremap <silent> <leader>f :Poplar<cr>
-    highlight! link PoplarMenu Normal
-    highlight! link PoplarMenuSel CursorLine
-  "}}}
-endif
-" Keep NERTDTree as it's useful to show things and to explore new projects
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeFind' } "{{{
-  " nnoremap <leader>f :NERDTreeToggle<CR>
+  nnoremap <leader>f :NERDTreeToggle<CR>
   nnoremap <leader>F :NERDTreeFind<CR>
 "}}}
 Plug 'sjl/badwolf'
