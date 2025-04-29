@@ -160,6 +160,7 @@ Plug 'sirver/ultisnips', { 'on': [] } "{{{
 "}}}
 Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree' "{{{
+  let NERDTreeShowHidden=1
   nnoremap <leader>f :NERDTreeToggle<CR>
   nnoremap <leader>F :NERDTreeFind<CR>
 "}}}
