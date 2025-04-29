@@ -159,7 +159,7 @@ Plug 'sirver/ultisnips', { 'on': [] } "{{{
   endfunction
 "}}}
 Plug 'honza/vim-snippets'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeFind' } "{{{
+Plug 'scrooloose/nerdtree' "{{{
   nnoremap <leader>f :NERDTreeToggle<CR>
   nnoremap <leader>F :NERDTreeFind<CR>
 "}}}
