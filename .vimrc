@@ -33,7 +33,6 @@ if !s:is_windows
     nnoremap <leader>E :History<cr>
     nnoremap <leader>b :Buffer<cr>
     nnoremap <leader>a :Rg<cr>
-    nnoremap <leader>l :BLines<cr>
     nnoremap <leader>L :Lines<cr>
     nnoremap <leader>t :BTags<cr>
     nnoremap <leader>T :Tags<cr>
@@ -67,7 +66,7 @@ else
     nnoremap <leader>b :CtrlPBuffer<cr>
     nnoremap <leader>t :CtrlPBufTag<cr>
     nnoremap <leader>T :CtrlPTag<cr>
-    nnoremap <leader>l :CtrlPLine<cr>
+    nnoremap <leader>L :CtrlPLine<cr>
 
     let g:ctrlp_match_window = 'bottom,order:btt,min:20,max:20,results:20'
     let g:ctrlp_working_path_mode = 0
@@ -361,7 +360,7 @@ nnoremap <silent> <c-l> <c-w>l
 nnoremap <silent> <c-j> <c-w>j
 nnoremap <silent> <c-h> <c-w>h
 nnoremap <silent> <c-k> <c-w>k
-nnoremap <silent> <leader>/ <c-^>
+nnoremap <silent> <leader>l <c-^>
 
 " easy terminal navigation
 if has('terminal') || s:is_nvim
