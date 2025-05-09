@@ -211,7 +211,7 @@ set encoding=utf-8
 set listchars=trail:.,tab:>\ ,eol:$
 set lazyredraw
 set laststatus=2
-set statusline=%-4m%f\ %y\ \ %=%{&ff}\ \|\ %{&fenc}\ [%l:%c]
+set statusline=%-4m%f\ %y\ \ %=%{&ff}\ \|\ %{&fenc}\ [%l/%L:%c]
 set incsearch hlsearch
 set nonumber
 set backspace=indent,eol,start
