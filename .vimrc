@@ -115,14 +115,10 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-unimpaired' "{{{
   " custom unimpaired-like mappings
-  nnoremap coa :ALEToggle<cr>
-  nnoremap cog :GitGutterToggle<cr>
-
-  " easier mappings for navigating the quickfix list
-  nnoremap <silent> <A-up> :cprevious<cr>
-  nnoremap <silent> <A-down> :cnext<cr>
+  nnoremap yog :GitGutterToggle<cr>
 "}}}
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' } "{{{
   augroup VimFireplace
@@ -165,6 +161,7 @@ Plug 'scrooloose/nerdtree' "{{{
 "}}}
 Plug 'sjl/badwolf'
 Plug 'bluz71/vim-moonfly-colors'
+Plug 'tomasiser/vim-code-dark'
 Plug 'endel/vim-github-colorscheme'
 Plug 'vasconcelloslf/vim-interestingwords' "{{{
   let g:interestingWordsDefaultMappings = 0
@@ -191,6 +188,18 @@ Plug 'github/copilot.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'prabirshrestha/vim-lsp' "{{{
   let g:lsp_diagnostics_enabled = 0
+
+  set tagfunc=lsp#tagfunc
+  nmap gd <plug>(lsp-definition)
+  nmap gs <plug>(lsp-document-symbol-search)
+  nmap gS <plug>(lsp-workspace-symbol-search)
+  " nmap gr <plug>(lsp-references)
+  nmap gi <plug>(lsp-implementation)
+  nmap gt <plug>(lsp-type-definition)
+  nmap gr <plug>(lsp-rename)
+  nmap [g <plug>(lsp-previous-diagnostic)
+  nmap ]g <plug>(lsp-next-diagnostic)
+  nmap K <plug>(lsp-hover)
 "}}}
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
@@ -288,7 +297,7 @@ else
   endif
 endif
 
-colorscheme moonfly "{{{
+colorscheme codedark "{{{
   " Custom colors
   " highlight DiffText cterm=bold ctermfg=255 ctermbg=196
   " highlight lspReference ctermfg=brown guifg=brown ctermbg=black guibg=brown
@@ -395,17 +404,14 @@ augroup END
 " clear the search buffer when hitting <leader><cr>
 nnoremap <silent> <leader><cr> :nohlsearch<cr>
 
-" cscope
-nnoremap d<c-]> :cs find d <c-r>=expand("<cword>")<cr><cr>
-nnoremap c<c-]> :cs find c <c-r>=expand("<cword>")<cr><cr>
-nnoremap t<c-]> :cs find t <c-r>=expand("<cword>")<cr><cr>
-nnoremap f<c-]> :cs find f <c-r>=expand("<cfile>")<cr><cr>
+" easier mappings for navigating the quickfix list
+nnoremap <silent> <A-up> :cprevious<cr>
+nnoremap <silent> <A-down> :cnext<cr>
 
 " On wrapped long lines it's much easier to use gj and gk
 noremap <expr> k v:count == 0 ? 'gk' : 'k'
 noremap <expr> j v:count == 0 ? 'gj' : 'j'
 
-""" useful things {{{
 " source vimscript operator
 function! SourceVimscript(type)
     let sel_save = &selection
@@ -435,6 +441,7 @@ nnoremap <silent> <leader>v :set opfunc=SourceVimscript<CR>g@
 vnoremap <silent> <leader>v :<C-U>call SourceVimscript("visual")<CR>
 nnoremap <silent> <leader>vv :call SourceVimscript("currentline")<CR>
 nnoremap <silent> <leader>vs :source $MYVIMRC<cr>
+nnoremap <silent> <leader>ve :e $MYVIMRC<cr>
 
 " split lines on whitespace
 " repeatable (requires vim-repeat)
@@ -500,7 +507,6 @@ endfunction
 
 xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
-"}}}
 
 " source private vimrc file if available
 if filereadable(expand("~/.vimrc.local"))
