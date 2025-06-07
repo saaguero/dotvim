@@ -40,6 +40,7 @@ if !s:is_windows
 
     " search current word with Rg
     nnoremap <leader>w :let @/=expand('<cword>')<cr> :Rg <C-r>/<cr>
+    vnoremap <leader>w :<C-u>Rg <C-r>=GetVisualSelection()<cr><cr>
 
     " add preview window, install https://github.com/sharkdp/bat.git for syntax-highlighting
     " if you aren't in fullscreen, press '?' to display it
