@@ -33,6 +33,7 @@ if !s:is_windows
     nnoremap <leader>E :History<cr>
     nnoremap <leader>b :Buffer<cr>
     nnoremap <leader>a :Rg<cr>
+    nnoremap <leader>A :RgFindInFolder<cr>
     nnoremap <leader>L :Lines<cr>
     nnoremap <leader>t :BTags<cr>
     nnoremap <leader>T :Tags<cr>
@@ -56,6 +57,12 @@ if !s:is_windows
           \   <bang>0 ? fzf#vim#with_preview('up:60%')
           \           : fzf#vim#with_preview('right:50%:hidden', '?'),
           \   <bang>0)
+
+    command! -bang -nargs=* RgFindInFolder
+      \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1,
+      \ {'dir': expand('%:p:h')},
+      \ <bang>0)
+
   "}}}
 else
   " fzf is supported in Windows, specially if you use WSL
