@@ -26,6 +26,26 @@ let g:plug_url_format = 'https://github.com/%s.git'
 if !s:is_windows
   Plug 'junegunn/fzf', { 'do': './install --bin' }
   Plug 'junegunn/fzf.vim' "{{{
+    " Inside vim's popup terminal fzf can't detect 256-color support and falls
+    " back to its 16-color theme, whose current-line bg is ANSI bright-black —
+    " unreadable with palettes that put a light gray there (base16 base03).
+    " Derive fzf colors from the colorscheme instead (explicit colors always win).
+    " Mapping from junegunn/fzf README.
+    let g:fzf_colors =
+    \ { 'fg':      ['fg', 'Normal'],
+      \ 'bg':      ['bg', 'Normal'],
+      \ 'hl':      ['fg', 'Comment'],
+      \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+      \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+      \ 'hl+':     ['fg', 'Statement'],
+      \ 'info':    ['fg', 'PreProc'],
+      \ 'border':  ['fg', 'Ignore'],
+      \ 'prompt':  ['fg', 'Conditional'],
+      \ 'pointer': ['fg', 'Exception'],
+      \ 'marker':  ['fg', 'Keyword'],
+      \ 'spinner': ['fg', 'Label'],
+      \ 'header':  ['fg', 'Comment'] }
+
     " TIP: on multiple selections, fzf populates the quickfix list
     " Select all with <alt-a> and deselect all with <alt-d>
     " With <tab> and <shift-tab> you can select individual items
